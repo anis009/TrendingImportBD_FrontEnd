@@ -28,7 +28,7 @@ jobs:
         with:
           username: "trendingimportBD@trendingimportbd.com"
           server: "ftp.trendingimportbd.com"
-          password: "VY,o%d-ZL#3S({35"
+          password: "=Cm=t(008!?.*%nZ"
           port: 21
           local-dir: "./"
           exclude: |
