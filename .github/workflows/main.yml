@@ -1,0 +1,39 @@
+on:
+  push:
+    branches:
+      - main
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_MODE: "production"
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+      - name: 📦 Install Dependencies
+        run: npm install -f
+
+      - name: 🔨 Build Next.js App
+        run: npm run build
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          username: "scanroseter_frontend@scanroster.com"
+          server: "ftp.scanroster.com"
+          password: "h3byhlN%4ikF"
+          port: 21
+          local-dir: "./"
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/package-lock.json**
+            **/some-secret-file.txt**

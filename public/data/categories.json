@@ -1,0 +1,198 @@
+[
+  {
+    "id": 1,
+    "title": "Make up",
+    "slug": "make-up",
+    "subcategories": [
+      {
+        "id": 101,
+        "title": "Face Makeup",
+        "slug": "face-makeup",
+        "items": [
+          "Compact & Pressed Powder",
+          "Foundation",
+          "Concealer",
+          "BB & CC Cream",
+          "Blush",
+          "Highlighter",
+          "Bronzer",
+          "Contour",
+          "Face Primer",
+          "Loose Powder",
+          "Setting Spray"
+        ]
+      },
+      {
+        "id": 102,
+        "title": "Eye Makeup",
+        "slug": "eye-makeup",
+        "items": [
+          "Kajal",
+          "Eyeliner",
+          "Eye Shadow",
+          "Mascara",
+          "Eye Brow",
+          "Contacts Lens",
+          "Eye Primer",
+          "Eye Shadow, Uncategorized",
+          "False Eyelashes"
+        ]
+      },
+      {
+        "id": 103,
+        "title": "Lips Makeup",
+        "slug": "lips-makeup",
+        "items": [
+          "Lip Tint",
+          "Lip Gloss",
+          "Bullet Lipstick",
+          "Lipstick Set",
+          "Lip Liner",
+          "Liquid Lipstick",
+          "Lip & Cheek Mud"
+        ]
+      },
+      {
+        "id": 104,
+        "title": "Nails & Arts",
+        "slug": "nails-arts",
+        "items": [
+          "Mehendi",
+          "Nail Polish",
+          "Fake Nails",
+          "Nail Polish Remover",
+          "Nail Art Kits",
+          "Nail Care"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Skin Care",
+    "slug": "skin-care",
+    "subcategories": [
+      {
+        "id": 201,
+        "title": "Face Care",
+        "slug": "face-care",
+        "items": [
+          "Serums and Essences",
+          "Moisturizers and Cream",
+          "Day & Night Cream",
+          "Facewash & Cleanser",
+          "Natural/Organic",
+          "Rose Water",
+          "Scrubs & Exfoliators",
+          "Sheet Mask",
+          "Soothing Gel",
+          "Toners & Astringents",
+          "Skin Care Kit"
+        ]
+      },
+      {
+        "id": 202,
+        "title": "Body",
+        "slug": "body",
+        "items": [
+          "Sunscreen",
+          "Talcum Powder",
+          "Bath & Shower",
+          "Body Scrubs",
+          "Anti-Stretch Mark Creams",
+          "Hair Remover",
+          "Lotions & Creams",
+          "Oil And Gel",
+          "Petroleum Jelly & Glycerines",
+          "Cleansing Oil",
+          "Whitening and Acne removing soap"
+        ]
+      },
+      {
+        "id": 203,
+        "title": "Eye Care",
+        "slug": "eye-care",
+        "items": ["Eye Serum", "Eye Cream", "Eye Mask"]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Hair Care",
+    "slug": "hair-care",
+    "subcategories": [
+      {
+        "id": 301,
+        "title": "Hair Care Products",
+        "slug": "hair-care-products",
+        "items": [
+          "Shampoo",
+          "Hair Oil",
+          "Hair Serum",
+          "Conditioner and Hair Mask",
+          "Hair Spray",
+          "Hair Care & Treatments",
+          "Hair Color",
+          "Hair Gel",
+          "Hair Care Combo"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Hair Care Accessories",
+    "slug": "hair-care-accessories",
+    "subcategories": [
+      {
+        "id": 401,
+        "title": "Hair Styling Tools",
+        "slug": "hair-styling-tools",
+        "items": [
+          "Hair Combs",
+          "Hair Curler",
+          "Hair Dryer",
+          "Hair Straightener",
+          "Hairpins"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Fragrance",
+    "slug": "fragrance",
+    "subcategories": [
+      {
+        "id": 501,
+        "title": "Fragrance Products",
+        "slug": "fragrance-products",
+        "items": [
+          "Body Mist",
+          "Roll on",
+          "Body Spray",
+          "Perfume",
+          "Perfume Oil"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Makeup Accessories",
+    "slug": "makeup-accessories",
+    "subcategories": [
+      {
+        "id": 601,
+        "title": "Makeup Tools",
+        "slug": "makeup-tools",
+        "items": [
+          "Makeup Brushes",
+          "Sponges & Applicators",
+          "Beauty Tools",
+          "EYE Lash Curler"
+        ]
+      }
+    ]
+  }
+]
