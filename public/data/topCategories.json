@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Be Beautiful",
+    "slug": "be-beautiful",
+    "items": [
+      {
+        "name": "Lippi",
+        "categories": "68458712dc51603d7412e74b",
+        "subCategories": "6845e057dda9218b7f8e230c",
+        "img": "/assets/categories/lippi.jpg"
+      },
+      {
+        "name": "Foundation",
+        "categories": "68458712dc51603d7412e74b",
+        "subCategories": "6845d4db03e2113703a28b43",
+        "img": "/assets/categories/foundation.jpg"
+      },
+      {
+        "name": "Serum",
+        "categories": "68458728dc51603d7412e751",
+        "subCategories": "6845e1eddda9218b7f8e2547",
+        "img": "/assets/categories/foundation.jpg"
+      },
+      {
+        "name": "Shampoo",
+        "categories": "68459b0a03e2113703a28af7",
+        "subCategories": "6845e432dda9218b7f8e2c3e",
+        "img": "/assets/categories/eyeliner.jpg"
+      }
+    ]
+  },
+  {
+    "title": "Be Gorgeous",
+    "slug": "be-gorgeous",
+    "items": [
+      {
+        "name": "Fragrance",
+        "categories": "68459b2903e2113703a28b05",
+        "subCategories": null,
+        "img": "/assets/categories/eyeliner.jpg"
+      },
+      {
+        "name": "Eye Shadow",
+        "categories": "68458712dc51603d7412e74b",
+        "subCategories": "6845df44dda9218b7f8e21d7",
+        "img": "/assets/categories/eyeliner.jpg"
+      },
+      {
+        "name": "Eye lash",
+        "categories": "68458712dc51603d7412e74b",
+        "subCategories": "6845df44dda9218b7f8e21d7",
+        "img": "/assets/categories/eyeliner.jpg"
+      },
+      {
+        "name": "Mascara",
+        "categories": "68458712dc51603d7412e74b",
+        "subCategories": "6845df44dda9218b7f8e21d7",
+        "img": "/assets/categories/eyeliner.jpg"
+      }
+    ]
+  },
+  {
+    "title": "Be Elegant",
+    "slug": "be-elegant",
+    "items": [
+      {
+        "name": "Cleanser",
+        "categories": "68458728dc51603d7412e751",
+        "subCategories": "6845e1eddda9218b7f8e2547",
+        "img": "/assets/categories/eyeliner.jpg"
+      },
+      {
+        "name": "Sun Screen",
+        "categories": "68458728dc51603d7412e751",
+        "subCategories": "6845e2f2dda9218b7f8e27fa",
+        "img": "/assets/categories/eyeliner.jpg"
+      },
+      {
+        "name": "Serum",
+        "categories": "68458728dc51603d7412e751",
+        "subCategories": "6845e1eddda9218b7f8e2547",
+        "img": "/assets/categories/eyeliner.jpg"
+      },
+      {
+        "name": "Shampoo",
+        "categories": "68459b0a03e2113703a28af7",
+        "subCategories": "6845e432dda9218b7f8e2c3e",
+        "img": "/assets/categories/eyeliner.jpg"
+      }
+    ]
+  },
+  {
+    "title": "Be Pretty",
+    "slug": "be-pretty",
+    "items": [
+      {
+        "name": "Soap Bar",
+        "categories": "68458728dc51603d7412e751",
+        "subCategories": "6845e2f2dda9218b7f8e27fa",
+        "img": "/assets/categories/eyeliner.jpg"
+      },
+      {
+        "name": "Sun Screen",
+        "categories": "68458728dc51603d7412e751",
+        "subCategories": "6845e2f2dda9218b7f8e27fa",
+        "img": "/assets/categories/eyeliner.jpg"
+      },
+      {
+        "name": "Powder",
+        "categories": "68458728dc51603d7412e751",
+        "subCategories": "6845e1eddda9218b7f8e2547",
+        "img": "/assets/categories/eyeliner.jpg"
+      },
+      {
+        "name": "Body Wash",
+        "categories": "68459b0a03e2113703a28af7",
+        "subCategories": "6845e432dda9218b7f8e2c3e",
+        "img": "/assets/categories/eyeliner.jpg"
+      }
+    ]
+  }
+]

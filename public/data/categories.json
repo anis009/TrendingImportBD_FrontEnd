@@ -1,198 +1,970 @@
-[
-  {
-    "id": 1,
-    "title": "Make up",
-    "slug": "make-up",
-    "subcategories": [
-      {
-        "id": 101,
-        "title": "Face Makeup",
-        "slug": "face-makeup",
-        "items": [
-          "Compact & Pressed Powder",
-          "Foundation",
-          "Concealer",
-          "BB & CC Cream",
-          "Blush",
-          "Highlighter",
-          "Bronzer",
-          "Contour",
-          "Face Primer",
-          "Loose Powder",
-          "Setting Spray"
-        ]
+{
+  "status": "success",
+  "data": [
+    {
+      "_id": "6845e6aadda9218b7f8e3224",
+      "image": "",
+      "categories": "68459b3603e2113703a28b0c",
+      "title": "EYE Lash Curler",
+      "slug": "eye-lash-curler",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
       },
-      {
-        "id": 102,
-        "title": "Eye Makeup",
-        "slug": "eye-makeup",
-        "items": [
-          "Kajal",
-          "Eyeliner",
-          "Eye Shadow",
-          "Mascara",
-          "Eye Brow",
-          "Contacts Lens",
-          "Eye Primer",
-          "Eye Shadow, Uncategorized",
-          "False Eyelashes"
-        ]
+      "order": 35,
+      "items": [],
+      "createdAt": "2025-06-08T19:38:18.375Z",
+      "updatedAt": "2025-06-08T19:38:18.375Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e68fdda9218b7f8e31e5",
+      "image": "",
+      "categories": "68459b3603e2113703a28b0c",
+      "title": "Beauty Tools",
+      "slug": "beauty-tools",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
       },
-      {
-        "id": 103,
-        "title": "Lips Makeup",
-        "slug": "lips-makeup",
-        "items": [
-          "Lip Tint",
-          "Lip Gloss",
-          "Bullet Lipstick",
-          "Lipstick Set",
-          "Lip Liner",
-          "Liquid Lipstick",
-          "Lip & Cheek Mud"
-        ]
+      "order": 33,
+      "items": [],
+      "createdAt": "2025-06-08T19:37:51.824Z",
+      "updatedAt": "2025-06-08T19:37:51.824Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e67edda9218b7f8e31a6",
+      "image": "",
+      "categories": "68459b3603e2113703a28b0c",
+      "title": "Sponges & Applicators",
+      "slug": "sponges-applicators",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
       },
-      {
-        "id": 104,
-        "title": "Nails & Arts",
-        "slug": "nails-arts",
-        "items": [
-          "Mehendi",
-          "Nail Polish",
-          "Fake Nails",
-          "Nail Polish Remover",
-          "Nail Art Kits",
-          "Nail Care"
-        ]
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Skin Care",
-    "slug": "skin-care",
-    "subcategories": [
-      {
-        "id": 201,
-        "title": "Face Care",
-        "slug": "face-care",
-        "items": [
-          "Serums and Essences",
-          "Moisturizers and Cream",
-          "Day & Night Cream",
-          "Facewash & Cleanser",
-          "Natural/Organic",
-          "Rose Water",
-          "Scrubs & Exfoliators",
-          "Sheet Mask",
-          "Soothing Gel",
-          "Toners & Astringents",
-          "Skin Care Kit"
-        ]
+      "order": 31,
+      "items": [],
+      "createdAt": "2025-06-08T19:37:34.092Z",
+      "updatedAt": "2025-06-08T19:37:34.092Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e66adda9218b7f8e3167",
+      "image": "",
+      "categories": "68459b3603e2113703a28b0c",
+      "title": "Makeup Brushes",
+      "slug": "makeup-brushes",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
       },
-      {
-        "id": 202,
-        "title": "Body",
-        "slug": "body",
-        "items": [
-          "Sunscreen",
-          "Talcum Powder",
-          "Bath & Shower",
-          "Body Scrubs",
-          "Anti-Stretch Mark Creams",
-          "Hair Remover",
-          "Lotions & Creams",
-          "Oil And Gel",
-          "Petroleum Jelly & Glycerines",
-          "Cleansing Oil",
-          "Whitening and Acne removing soap"
-        ]
+      "order": 30,
+      "items": [],
+      "createdAt": "2025-06-08T19:37:14.470Z",
+      "updatedAt": "2025-06-08T19:37:14.470Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e653dda9218b7f8e3128",
+      "image": "",
+      "categories": "68459b2903e2113703a28b05",
+      "title": "Perfume Oil",
+      "slug": "perfume-oil",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
       },
-      {
-        "id": 203,
-        "title": "Eye Care",
-        "slug": "eye-care",
-        "items": ["Eye Serum", "Eye Cream", "Eye Mask"]
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Hair Care",
-    "slug": "hair-care",
-    "subcategories": [
-      {
-        "id": 301,
-        "title": "Hair Care Products",
-        "slug": "hair-care-products",
-        "items": [
-          "Shampoo",
-          "Hair Oil",
-          "Hair Serum",
-          "Conditioner and Hair Mask",
-          "Hair Spray",
-          "Hair Care & Treatments",
-          "Hair Color",
-          "Hair Gel",
-          "Hair Care Combo"
-        ]
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "title": "Hair Care Accessories",
-    "slug": "hair-care-accessories",
-    "subcategories": [
-      {
-        "id": 401,
-        "title": "Hair Styling Tools",
-        "slug": "hair-styling-tools",
-        "items": [
-          "Hair Combs",
-          "Hair Curler",
-          "Hair Dryer",
-          "Hair Straightener",
-          "Hairpins"
-        ]
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "title": "Fragrance",
-    "slug": "fragrance",
-    "subcategories": [
-      {
-        "id": 501,
-        "title": "Fragrance Products",
-        "slug": "fragrance-products",
-        "items": [
-          "Body Mist",
-          "Roll on",
-          "Body Spray",
-          "Perfume",
-          "Perfume Oil"
-        ]
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "title": "Makeup Accessories",
-    "slug": "makeup-accessories",
-    "subcategories": [
-      {
-        "id": 601,
-        "title": "Makeup Tools",
-        "slug": "makeup-tools",
-        "items": [
-          "Makeup Brushes",
-          "Sponges & Applicators",
-          "Beauty Tools",
-          "EYE Lash Curler"
-        ]
-      }
-    ]
-  }
-]
+      "order": 29,
+      "items": [],
+      "createdAt": "2025-06-08T19:36:51.589Z",
+      "updatedAt": "2025-06-08T19:36:51.589Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e631dda9218b7f8e30ab",
+      "image": "",
+      "categories": "68459b2903e2113703a28b05",
+      "title": "Perfume",
+      "slug": "perfume",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 28,
+      "items": [],
+      "createdAt": "2025-06-08T19:36:17.384Z",
+      "updatedAt": "2025-06-08T19:36:25.661Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e623dda9218b7f8e306c",
+      "image": "",
+      "categories": "68459b2903e2113703a28b05",
+      "title": "Body Spray",
+      "slug": "body-spray",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 27,
+      "items": [],
+      "createdAt": "2025-06-08T19:36:03.319Z",
+      "updatedAt": "2025-06-08T19:36:03.319Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e5e6dda9218b7f8e2fef",
+      "image": "",
+      "categories": "68459b2903e2113703a28b05",
+      "title": "Roll on",
+      "slug": "roll-on",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 26,
+      "items": [],
+      "createdAt": "2025-06-08T19:35:02.712Z",
+      "updatedAt": "2025-06-08T19:35:20.419Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e596dda9218b7f8e2fb0",
+      "image": "",
+      "categories": "68459b2903e2113703a28b05",
+      "title": "Body Mist",
+      "slug": "body-mist",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 25,
+      "items": [],
+      "createdAt": "2025-06-08T19:33:42.408Z",
+      "updatedAt": "2025-06-08T19:33:42.408Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e57fdda9218b7f8e2f71",
+      "image": "",
+      "categories": "68459b1c03e2113703a28afe",
+      "title": "Hairpins",
+      "slug": "hairpins",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 23,
+      "items": [],
+      "createdAt": "2025-06-08T19:33:19.694Z",
+      "updatedAt": "2025-06-08T19:33:19.694Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e56bdda9218b7f8e2f32",
+      "image": "",
+      "categories": "68459b1c03e2113703a28afe",
+      "title": "Hair Straightener",
+      "slug": "hair-straightener",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 22,
+      "items": [],
+      "createdAt": "2025-06-08T19:32:59.186Z",
+      "updatedAt": "2025-06-08T19:32:59.186Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e55adda9218b7f8e2ef3",
+      "image": "",
+      "categories": "68459b1c03e2113703a28afe",
+      "title": "Hair Dryer",
+      "slug": "hair-dryer",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 21,
+      "items": [],
+      "createdAt": "2025-06-08T19:32:42.369Z",
+      "updatedAt": "2025-06-08T19:32:42.369Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e544dda9218b7f8e2eb4",
+      "image": "",
+      "categories": "68459b1c03e2113703a28afe",
+      "title": "Hair Curler",
+      "slug": "hair-curler",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 20,
+      "items": [],
+      "createdAt": "2025-06-08T19:32:20.418Z",
+      "updatedAt": "2025-06-08T19:32:20.418Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e532dda9218b7f8e2e75",
+      "image": "",
+      "categories": "68459b1c03e2113703a28afe",
+      "title": "Hair Combs",
+      "slug": "hair-combs",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 19,
+      "items": [],
+      "createdAt": "2025-06-08T19:32:02.298Z",
+      "updatedAt": "2025-06-08T19:32:02.298Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e4f8dda9218b7f8e2e36",
+      "image": "",
+      "categories": "68459b0a03e2113703a28af7",
+      "title": "Hair Care Combo",
+      "slug": "hair-care-combo",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 18,
+      "items": [],
+      "createdAt": "2025-06-08T19:31:04.103Z",
+      "updatedAt": "2025-06-08T19:31:04.103Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e4e3dda9218b7f8e2df7",
+      "image": "",
+      "categories": "68459b0a03e2113703a28af7",
+      "title": "Hair Gel",
+      "slug": "hair-gel",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 16,
+      "items": [],
+      "createdAt": "2025-06-08T19:30:43.532Z",
+      "updatedAt": "2025-06-08T19:30:43.532Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e4a7dda9218b7f8e2db8",
+      "image": "",
+      "categories": "68459b0a03e2113703a28af7",
+      "title": "Hair Color",
+      "slug": "hair-color",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 15,
+      "items": [],
+      "createdAt": "2025-06-08T19:29:43.908Z",
+      "updatedAt": "2025-06-08T19:29:43.908Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e490dda9218b7f8e2d79",
+      "image": "",
+      "categories": "68459b0a03e2113703a28af7",
+      "title": "Hair Care & Treatments",
+      "slug": "hair-care-treatments",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 14,
+      "items": [],
+      "createdAt": "2025-06-08T19:29:20.170Z",
+      "updatedAt": "2025-06-08T19:29:20.170Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e47bdda9218b7f8e2d3a",
+      "image": "",
+      "categories": "68459b0a03e2113703a28af7",
+      "title": "Hair Spray",
+      "slug": "hair-spray",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 13,
+      "items": [],
+      "createdAt": "2025-06-08T19:28:59.323Z",
+      "updatedAt": "2025-06-08T19:28:59.323Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e46adda9218b7f8e2cfb",
+      "image": "",
+      "categories": "68459b0a03e2113703a28af7",
+      "title": "Conditioner and Hair Mask",
+      "slug": "conditioner-and-hair-mask",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 12,
+      "items": [],
+      "createdAt": "2025-06-08T19:28:42.191Z",
+      "updatedAt": "2025-06-08T19:28:42.191Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e457dda9218b7f8e2cbc",
+      "image": "",
+      "categories": "68459b0a03e2113703a28af7",
+      "title": "Hair Serum",
+      "slug": "hair-serum",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 11,
+      "items": [],
+      "createdAt": "2025-06-08T19:28:23.523Z",
+      "updatedAt": "2025-06-08T19:28:23.523Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e447dda9218b7f8e2c7d",
+      "image": "",
+      "categories": "68459b0a03e2113703a28af7",
+      "title": "Hair Oil",
+      "slug": "hair-oil",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 10,
+      "items": [],
+      "createdAt": "2025-06-08T19:28:07.772Z",
+      "updatedAt": "2025-06-08T19:28:07.772Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e432dda9218b7f8e2c3e",
+      "image": "",
+      "categories": "68459b0a03e2113703a28af7",
+      "title": "Shampoo",
+      "slug": "shampoo",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 9,
+      "items": [],
+      "createdAt": "2025-06-08T19:27:46.634Z",
+      "updatedAt": "2025-06-08T19:27:46.634Z",
+      "__v": 0
+    },
+    {
+      "_id": "6845e3bcdda9218b7f8e2b3c",
+      "image": "",
+      "categories": "68458728dc51603d7412e751",
+      "title": "Eye Care",
+      "slug": "eye-care",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 7,
+      "items": [
+        {
+          "name": "Eye Serum",
+          "image": "",
+          "order": 1,
+          "_id": "6845e3d3dda9218b7f8e2b79",
+          "createdAt": "2025-06-08T19:26:11.466Z",
+          "updatedAt": "2025-06-08T19:26:11.466Z"
+        },
+        {
+          "name": "Eye Cream",
+          "image": "",
+          "order": 2,
+          "_id": "6845e3dedda9218b7f8e2bb9",
+          "createdAt": "2025-06-08T19:26:22.460Z",
+          "updatedAt": "2025-06-08T19:26:22.460Z"
+        },
+        {
+          "name": "Eye Mask",
+          "image": "",
+          "order": 3,
+          "_id": "6845e3e9dda9218b7f8e2bfc",
+          "createdAt": "2025-06-08T19:26:33.894Z",
+          "updatedAt": "2025-06-08T19:26:33.894Z"
+        }
+      ],
+      "createdAt": "2025-06-08T19:25:48.114Z",
+      "updatedAt": "2025-06-08T19:26:33.895Z",
+      "__v": 3
+    },
+    {
+      "_id": "6845e2f2dda9218b7f8e27fa",
+      "image": "",
+      "categories": "68458728dc51603d7412e751",
+      "title": "Body",
+      "slug": "body",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 6,
+      "items": [
+        {
+          "name": "Sunscreen",
+          "image": "",
+          "order": 1,
+          "_id": "6845e30bdda9218b7f8e285c",
+          "createdAt": "2025-06-08T19:22:51.104Z",
+          "updatedAt": "2025-06-08T19:22:51.104Z"
+        },
+        {
+          "name": "Talcum Powder",
+          "image": "",
+          "order": 2,
+          "_id": "6845e317dda9218b7f8e2891",
+          "createdAt": "2025-06-08T19:23:03.109Z",
+          "updatedAt": "2025-06-08T19:23:03.109Z"
+        },
+        {
+          "name": "Bath & Shower",
+          "image": "",
+          "order": 3,
+          "_id": "6845e327dda9218b7f8e28c9",
+          "createdAt": "2025-06-08T19:23:19.484Z",
+          "updatedAt": "2025-06-08T19:23:19.484Z"
+        },
+        {
+          "name": "Body Scrubs",
+          "image": "",
+          "order": 4,
+          "_id": "6845e339dda9218b7f8e2904",
+          "createdAt": "2025-06-08T19:23:37.188Z",
+          "updatedAt": "2025-06-08T19:23:37.188Z"
+        },
+        {
+          "name": "Anti-Stretch Mark Creams",
+          "image": "",
+          "order": 5,
+          "_id": "6845e347dda9218b7f8e2942",
+          "createdAt": "2025-06-08T19:23:51.090Z",
+          "updatedAt": "2025-06-08T19:23:51.090Z"
+        },
+        {
+          "name": "Hair Remover",
+          "image": "",
+          "order": 6,
+          "_id": "6845e354dda9218b7f8e2983",
+          "createdAt": "2025-06-08T19:24:04.924Z",
+          "updatedAt": "2025-06-08T19:24:04.924Z"
+        },
+        {
+          "name": "Lotions & Creams",
+          "image": "",
+          "order": 7,
+          "_id": "6845e363dda9218b7f8e29c7",
+          "createdAt": "2025-06-08T19:24:19.754Z",
+          "updatedAt": "2025-06-08T19:24:19.754Z"
+        },
+        {
+          "name": "Oil And Gel",
+          "image": "",
+          "order": 8,
+          "_id": "6845e370dda9218b7f8e2a0e",
+          "createdAt": "2025-06-08T19:24:32.995Z",
+          "updatedAt": "2025-06-08T19:24:32.995Z"
+        },
+        {
+          "name": "Petroleum Jelly & Glycerines",
+          "image": "",
+          "order": 9,
+          "_id": "6845e37ddda9218b7f8e2a58",
+          "createdAt": "2025-06-08T19:24:45.878Z",
+          "updatedAt": "2025-06-08T19:24:45.878Z"
+        },
+        {
+          "name": "Cleansing Oil",
+          "image": "",
+          "order": 10,
+          "_id": "6845e38edda9218b7f8e2aa5",
+          "createdAt": "2025-06-08T19:25:02.280Z",
+          "updatedAt": "2025-06-08T19:25:02.280Z"
+        },
+        {
+          "name": "Whitening and Acne removing soap",
+          "image": "",
+          "order": 11,
+          "_id": "6845e39bdda9218b7f8e2af5",
+          "createdAt": "2025-06-08T19:25:15.461Z",
+          "updatedAt": "2025-06-08T19:25:15.461Z"
+        }
+      ],
+      "createdAt": "2025-06-08T19:22:26.427Z",
+      "updatedAt": "2025-06-08T19:25:15.462Z",
+      "__v": 11
+    },
+    {
+      "_id": "6845e1eddda9218b7f8e2547",
+      "image": "",
+      "categories": "68458728dc51603d7412e751",
+      "title": "Face Care",
+      "slug": "face-care",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 5,
+      "items": [
+        {
+          "name": "Serums and Essences",
+          "image": "",
+          "order": 1,
+          "_id": "6845e226dda9218b7f8e2593",
+          "createdAt": "2025-06-08T19:19:02.073Z",
+          "updatedAt": "2025-06-08T19:19:02.073Z"
+        },
+        {
+          "name": "Moisturizers and Cream",
+          "image": "",
+          "order": 2,
+          "_id": "6845e232dda9218b7f8e25bd",
+          "createdAt": "2025-06-08T19:19:14.650Z",
+          "updatedAt": "2025-06-08T19:19:14.650Z"
+        },
+        {
+          "name": "Day & Night Cream",
+          "image": "",
+          "order": 3,
+          "_id": "6845e23cdda9218b7f8e25ea",
+          "createdAt": "2025-06-08T19:19:24.979Z",
+          "updatedAt": "2025-06-08T19:19:24.979Z"
+        },
+        {
+          "name": "Facewash & Cleanser",
+          "image": "",
+          "order": 4,
+          "_id": "6845e24cdda9218b7f8e261a",
+          "createdAt": "2025-06-08T19:19:40.539Z",
+          "updatedAt": "2025-06-08T19:19:40.539Z"
+        },
+        {
+          "name": "Natural/Organic",
+          "image": "",
+          "order": 5,
+          "_id": "6845e259dda9218b7f8e264d",
+          "createdAt": "2025-06-08T19:19:53.191Z",
+          "updatedAt": "2025-06-08T19:19:53.191Z"
+        },
+        {
+          "name": "Rose Water",
+          "image": "",
+          "order": 6,
+          "_id": "6845e266dda9218b7f8e2683",
+          "createdAt": "2025-06-08T19:20:06.089Z",
+          "updatedAt": "2025-06-08T19:20:06.089Z"
+        },
+        {
+          "name": "Scrubs & Exfoliators",
+          "image": "",
+          "order": 7,
+          "_id": "6845e27fdda9218b7f8e26bc",
+          "createdAt": "2025-06-08T19:20:31.792Z",
+          "updatedAt": "2025-06-08T19:20:31.792Z"
+        },
+        {
+          "name": "Sheet Mask",
+          "image": "",
+          "order": 8,
+          "_id": "6845e28bdda9218b7f8e26f8",
+          "createdAt": "2025-06-08T19:20:43.281Z",
+          "updatedAt": "2025-06-08T19:20:43.281Z"
+        },
+        {
+          "name": "Soothing Gel",
+          "image": "",
+          "order": 9,
+          "_id": "6845e2aedda9218b7f8e2737",
+          "createdAt": "2025-06-08T19:21:18.643Z",
+          "updatedAt": "2025-06-08T19:21:18.643Z"
+        },
+        {
+          "name": "Toners & Astringents",
+          "image": "",
+          "order": 10,
+          "_id": "6845e2bddda9218b7f8e2779",
+          "createdAt": "2025-06-08T19:21:33.513Z",
+          "updatedAt": "2025-06-08T19:21:33.513Z"
+        },
+        {
+          "name": "Skin Care Kit",
+          "image": "",
+          "order": 12,
+          "_id": "6845e2cddda9218b7f8e27be",
+          "createdAt": "2025-06-08T19:21:49.021Z",
+          "updatedAt": "2025-06-08T19:21:49.021Z"
+        }
+      ],
+      "createdAt": "2025-06-08T19:18:05.729Z",
+      "updatedAt": "2025-06-08T19:21:49.021Z",
+      "__v": 11
+    },
+    {
+      "_id": "6845e0ecdda9218b7f8e2428",
+      "image": "",
+      "categories": "68458712dc51603d7412e74b",
+      "title": "Nails & Arts",
+      "slug": "nails-arts",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 4,
+      "items": [
+        {
+          "name": "Mehendi",
+          "image": "",
+          "order": 1,
+          "_id": "6845e100dda9218b7f8e2449",
+          "createdAt": "2025-06-08T19:14:08.939Z",
+          "updatedAt": "2025-06-08T19:14:08.939Z"
+        },
+        {
+          "name": "Nail Polish",
+          "image": "",
+          "order": 2,
+          "_id": "6845e10adda9218b7f8e246d",
+          "createdAt": "2025-06-08T19:14:18.818Z",
+          "updatedAt": "2025-06-08T19:14:18.818Z"
+        },
+        {
+          "name": "Fake Nails",
+          "image": "",
+          "order": 3,
+          "_id": "6845e118dda9218b7f8e2494",
+          "createdAt": "2025-06-08T19:14:32.305Z",
+          "updatedAt": "2025-06-08T19:14:32.305Z"
+        },
+        {
+          "name": "Nail Polish Remover",
+          "image": "",
+          "order": 4,
+          "_id": "6845e125dda9218b7f8e24be",
+          "createdAt": "2025-06-08T19:14:45.349Z",
+          "updatedAt": "2025-06-08T19:14:45.349Z"
+        },
+        {
+          "name": "Nail Art Kits",
+          "image": "",
+          "order": 5,
+          "_id": "6845e135dda9218b7f8e24eb",
+          "createdAt": "2025-06-08T19:15:01.420Z",
+          "updatedAt": "2025-06-08T19:15:01.420Z"
+        },
+        {
+          "name": "Nail Care",
+          "image": "",
+          "order": 6,
+          "_id": "6845e145dda9218b7f8e251b",
+          "createdAt": "2025-06-08T19:15:17.624Z",
+          "updatedAt": "2025-06-08T19:15:17.624Z"
+        }
+      ],
+      "createdAt": "2025-06-08T19:13:48.582Z",
+      "updatedAt": "2025-06-08T19:15:17.624Z",
+      "__v": 6
+    },
+    {
+      "_id": "6845e057dda9218b7f8e230c",
+      "image": "",
+      "categories": "68458712dc51603d7412e74b",
+      "title": "Lips Makeup",
+      "slug": "lips-makeup",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 3,
+      "items": [
+        {
+          "name": "Lip Tint",
+          "image": "",
+          "order": 1,
+          "_id": "6845e07ddda9218b7f8e2326",
+          "createdAt": "2025-06-08T19:11:57.660Z",
+          "updatedAt": "2025-06-08T19:11:57.660Z"
+        },
+        {
+          "name": "Lip Gloss",
+          "image": "",
+          "order": 2,
+          "_id": "6845e08adda9218b7f8e2343",
+          "createdAt": "2025-06-08T19:12:10.520Z",
+          "updatedAt": "2025-06-08T19:12:10.520Z"
+        },
+        {
+          "name": "Bullet Lipstick",
+          "image": "",
+          "order": 3,
+          "_id": "6845e097dda9218b7f8e2363",
+          "createdAt": "2025-06-08T19:12:23.107Z",
+          "updatedAt": "2025-06-08T19:12:23.107Z"
+        },
+        {
+          "name": "Lipstick Set",
+          "image": "",
+          "order": 4,
+          "_id": "6845e0a3dda9218b7f8e2386",
+          "createdAt": "2025-06-08T19:12:35.161Z",
+          "updatedAt": "2025-06-08T19:12:35.161Z"
+        },
+        {
+          "name": "Lip Liner",
+          "image": "",
+          "order": 5,
+          "_id": "6845e0aedda9218b7f8e23ac",
+          "createdAt": "2025-06-08T19:12:46.905Z",
+          "updatedAt": "2025-06-08T19:12:46.905Z"
+        },
+        {
+          "name": "Liquid Lipstick",
+          "image": "",
+          "order": 6,
+          "_id": "6845e0bbdda9218b7f8e23d5",
+          "createdAt": "2025-06-08T19:12:59.548Z",
+          "updatedAt": "2025-06-08T19:12:59.548Z"
+        },
+        {
+          "name": "Lip & Cheek Mud",
+          "image": "",
+          "order": 7,
+          "_id": "6845e0c8dda9218b7f8e2401",
+          "createdAt": "2025-06-08T19:13:12.967Z",
+          "updatedAt": "2025-06-08T19:13:12.967Z"
+        }
+      ],
+      "createdAt": "2025-06-08T19:11:19.457Z",
+      "updatedAt": "2025-06-08T19:13:12.968Z",
+      "__v": 7
+    },
+    {
+      "_id": "6845df44dda9218b7f8e21d7",
+      "image": "",
+      "categories": "68458712dc51603d7412e74b",
+      "title": "Eye Makeup",
+      "slug": "eye-makeup",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 2,
+      "items": [
+        {
+          "name": "Kajal",
+          "image": "",
+          "order": 1,
+          "_id": "6845dfacdda9218b7f8e21f6",
+          "createdAt": "2025-06-08T19:08:28.123Z",
+          "updatedAt": "2025-06-08T19:08:28.123Z"
+        },
+        {
+          "name": "Eyeliner",
+          "image": "",
+          "order": 2,
+          "_id": "6845dfb6dda9218b7f8e220a",
+          "createdAt": "2025-06-08T19:08:38.578Z",
+          "updatedAt": "2025-06-08T19:08:38.578Z"
+        },
+        {
+          "name": "Eye Shadow",
+          "image": "",
+          "order": 3,
+          "_id": "6845dfc3dda9218b7f8e2221",
+          "createdAt": "2025-06-08T19:08:51.682Z",
+          "updatedAt": "2025-06-08T19:08:51.682Z"
+        },
+        {
+          "name": "Mascara",
+          "image": "",
+          "order": 4,
+          "_id": "6845dfcedda9218b7f8e223b",
+          "createdAt": "2025-06-08T19:09:02.726Z",
+          "updatedAt": "2025-06-08T19:09:02.726Z"
+        },
+        {
+          "name": "Eye Brow",
+          "image": "",
+          "order": 5,
+          "_id": "6845dfebdda9218b7f8e2258",
+          "createdAt": "2025-06-08T19:09:31.734Z",
+          "updatedAt": "2025-06-08T19:09:31.734Z"
+        },
+        {
+          "name": "Contacts Lens",
+          "image": "",
+          "order": 6,
+          "_id": "6845dff7dda9218b7f8e2278",
+          "createdAt": "2025-06-08T19:09:43.656Z",
+          "updatedAt": "2025-06-08T19:09:43.656Z"
+        },
+        {
+          "name": "Eye Primer",
+          "image": "",
+          "order": 7,
+          "_id": "6845e007dda9218b7f8e229b",
+          "createdAt": "2025-06-08T19:09:59.330Z",
+          "updatedAt": "2025-06-08T19:09:59.330Z"
+        },
+        {
+          "name": "Eye Shadow, Uncategorized",
+          "image": "",
+          "order": 8,
+          "_id": "6845e01ddda9218b7f8e22c1",
+          "createdAt": "2025-06-08T19:10:21.322Z",
+          "updatedAt": "2025-06-08T19:10:21.322Z"
+        },
+        {
+          "name": "False Eyelashes",
+          "image": "",
+          "order": 9,
+          "_id": "6845e02cdda9218b7f8e22ea",
+          "createdAt": "2025-06-08T19:10:36.133Z",
+          "updatedAt": "2025-06-08T19:10:36.133Z"
+        }
+      ],
+      "createdAt": "2025-06-08T19:06:44.432Z",
+      "updatedAt": "2025-06-08T19:10:36.134Z",
+      "__v": 9
+    },
+    {
+      "_id": "6845d4db03e2113703a28b43",
+      "image": "",
+      "title": "Face Makeup",
+      "slug": "face-makeup",
+      "user": {
+        "_id": "684488ace4ac79615c79b72c",
+        "name": "MD. ANIS MOLLA",
+        "email": "anis.cse5.bu@gmail.com"
+      },
+      "order": 1,
+      "items": [
+        {
+          "name": "Compact & Pressed Powder",
+          "image": "",
+          "order": 1,
+          "_id": "6845d55503e2113703a28b50",
+          "createdAt": "2025-06-08T18:24:21.914Z",
+          "updatedAt": "2025-06-08T18:24:21.914Z"
+        },
+        {
+          "name": "Foundation",
+          "image": "",
+          "order": 2,
+          "_id": "6845d59103e2113703a28b5b",
+          "createdAt": "2025-06-08T18:25:21.760Z",
+          "updatedAt": "2025-06-08T18:25:21.760Z"
+        },
+        {
+          "name": "Concealer",
+          "image": "",
+          "order": 3,
+          "_id": "6845d7b903e2113703a28b69",
+          "createdAt": "2025-06-08T18:34:33.766Z",
+          "updatedAt": "2025-06-08T18:34:33.766Z"
+        },
+        {
+          "name": "BB & CC Cream",
+          "image": "",
+          "order": 4,
+          "_id": "6845d7f103e2113703a28b84",
+          "createdAt": "2025-06-08T18:35:29.756Z",
+          "updatedAt": "2025-06-08T18:35:29.756Z"
+        },
+        {
+          "name": "Blush",
+          "image": "",
+          "order": 5,
+          "_id": "6845d80103e2113703a28b98",
+          "createdAt": "2025-06-08T18:35:45.262Z",
+          "updatedAt": "2025-06-08T18:35:45.262Z"
+        },
+        {
+          "name": "Highlighter",
+          "image": "",
+          "order": 6,
+          "_id": "6845d80d03e2113703a28baf",
+          "createdAt": "2025-06-08T18:35:57.480Z",
+          "updatedAt": "2025-06-08T18:35:57.480Z"
+        },
+        {
+          "name": "Contour",
+          "image": "",
+          "order": 7,
+          "_id": "6845d86203e2113703a28bc9",
+          "createdAt": "2025-06-08T18:37:22.638Z",
+          "updatedAt": "2025-06-08T18:37:22.638Z"
+        },
+        {
+          "name": "Face Primer",
+          "image": "",
+          "order": 8,
+          "_id": "6845d8ce03e2113703a28bf8",
+          "createdAt": "2025-06-08T18:39:10.972Z",
+          "updatedAt": "2025-06-08T18:39:10.972Z"
+        },
+        {
+          "name": "Setting Spray",
+          "image": "",
+          "order": 10,
+          "_id": "6845d90b03e2113703a28c18",
+          "createdAt": "2025-06-08T18:40:11.584Z",
+          "updatedAt": "2025-06-08T18:40:11.584Z"
+        }
+      ],
+      "createdAt": "2025-06-08T18:22:19.849Z",
+      "updatedAt": "2025-06-08T19:05:34.175Z",
+      "__v": 9,
+      "categories": "68458712dc51603d7412e74b"
+    }
+  ]
+}

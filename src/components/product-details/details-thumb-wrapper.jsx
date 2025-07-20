@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import PopupVideo from "../common/popup-video";
+import { getImageUrl } from "@/utils/common";
 
 const DetailsThumbWrapper = ({
   imageURLs,
@@ -9,7 +10,7 @@ const DetailsThumbWrapper = ({
   imgWidth = 416,
   imgHeight = 480,
   videoId = false,
-  status
+  status,
 }) => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   return (
@@ -24,7 +25,7 @@ const DetailsThumbWrapper = ({
                 onClick={() => handleImageActive(item)}
               >
                 <Image
-                  src={item.img}
+                  src={getImageUrl(item.img)}
                   alt="image"
                   width={78}
                   height={100}
@@ -38,13 +39,15 @@ const DetailsThumbWrapper = ({
           <div className="tab-pane fade show active">
             <div className="tp-product-details-nav-main-thumb p-relative">
               <Image
-                src={activeImg}
+                src={getImageUrl(activeImg)}
                 alt="product img"
                 width={imgWidth}
                 height={imgHeight}
               />
               <div className="tp-product-badge">
-                {status === 'out-of-stock' && <span className="product-hot">out-stock</span>}
+                {status === "out-of-stock" && (
+                  <span className="product-hot">out-stock</span>
+                )}
               </div>
               {videoId && (
                 <div

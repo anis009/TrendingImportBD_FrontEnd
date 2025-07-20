@@ -13,6 +13,8 @@ import FeatureAreaTwo from "@/components/features/feature-area-2";
 import InstagramAreaThree from "@/components/instagram/instagram-area-3";
 import Footer from "@/layout/footers/footer";
 import FlashSaleCarousel from "@/components/common/flash-sale-carousel";
+import Offers99 from "@/components/offers/offers99";
+import TopCategories from "@/components/TopCategories/TopCategories";
 
 export default function Home() {
   return (
@@ -20,6 +22,8 @@ export default function Home() {
       <SEO pageTitle="Home" />
       <HeaderThree />
       <FlashSaleCarousel />
+      <Offers99 />
+      <TopCategories />
       <BeautyBanner />
       <BeautyCategory />
       <BeautyFeatured />
