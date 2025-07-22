@@ -4,8 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 // internal
 import { Close, Minus, Plus } from "@/svg";
-import {add_cart_product,quantityDecrement} from "@/redux/features/cartSlice";
+import {
+  add_cart_product,
+  quantityDecrement,
+} from "@/redux/features/cartSlice";
 import { remove_wishlist_product } from "@/redux/features/wishlist-slice";
+import { getImageUrl } from "@/utils/common";
 
 const WishlistItem = ({ product }) => {
   const { _id, img, title, price } = product || {};
@@ -29,14 +33,19 @@ const WishlistItem = ({ product }) => {
     <tr>
       <td className="tp-cart-img">
         <Link href={`/product-details/${_id}`}>
-          <Image src={img} alt="product img" width={70} height={100} />
+          <Image
+            src={getImageUrl(img)}
+            alt="product img"
+            width={70}
+            height={100}
+          />
         </Link>
       </td>
       <td className="tp-cart-title">
         <Link href={`/product-details/${_id}`}>{title}</Link>
       </td>
       <td className="tp-cart-price">
-        <span>${price.toFixed(2)}</span>
+        <span>৳{price.toFixed(2)}</span>
       </td>
       <td className="tp-cart-quantity">
         <div className="tp-product-quantity mt-10 mb-10">

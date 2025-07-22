@@ -98,7 +98,7 @@ const PopularProducts = () => {
               </Link>
             </div>
             <div className="tp-category-content-2">
-              <span>From ${item.price}</span>
+              <span>From ৳{item.price}</span>
               <h3 className="tp-category-title-2">
                 <Link href={`/product-details/${item._id}`}>
                   {item.title.substring(0, 15)}

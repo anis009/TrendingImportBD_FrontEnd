@@ -46,6 +46,9 @@ const ProductItem = ({ product, style_2 = false }) => {
     dispatch(add_to_compare(prd));
   };
 
+  console.log("discount~~", discount);
+  console.log("price~~", price);
+
   return (
     <div className={`tp-product-item-2 ${style_2 ? "" : "mb-40"}`}>
       <div className="tp-product-thumb-2 p-relative z-index-1 fix">
@@ -150,20 +153,20 @@ const ProductItem = ({ product, style_2 = false }) => {
           {discount > 0 ? (
             <>
               <span className="tp-product-price-2 new-price">
-                ${price.toFixed(2)}{" "}
-              </span>
-              <span className="tp-product-price-2 old-price">
-                {" "}
-                $
+                ৳
                 {(
                   Number(price) -
                   (Number(price) * Number(discount)) / 100
                 ).toFixed(2)}
               </span>
+              <span className="tp-product-price-2 old-price">
+                {" "}
+                ৳{price.toFixed(2)}{" "}
+              </span>
             </>
           ) : (
             <span className="tp-product-price-2 new-price">
-              ${price.toFixed(2)}
+              ৳{price.toFixed(2)}
             </span>
           )}
         </div>

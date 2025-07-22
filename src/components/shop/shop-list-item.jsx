@@ -65,12 +65,6 @@ const ShopListItem = ({ product }) => {
               borderRadius: "8px",
               backgroundColor: "#f5f5f5",
             }}
-            onError={(e) => {
-              console.log("Image failed to load:", getImageUrl(img));
-              console.log("Original img field:", img);
-              e.target.src = "/assets/img/product/product-placeholder.svg";
-            }}
-            loading="lazy"
           />
         </Link>
 
@@ -133,18 +127,17 @@ const ShopListItem = ({ product }) => {
           <div className="tp-product-price-wrapper-2">
             {discount > 0 ? (
               <>
-                <span className="tp-product-price-2 new-price">${price}</span>
-                <span className="tp-product-price-2 old-price">
-                  {" "}
-                  $
+                <span className="tp-product-price-2 new-price">
+                  ৳
                   {(
                     Number(price) -
                     (Number(price) * Number(discount)) / 100
                   ).toFixed(2)}
                 </span>
+                <span className="tp-product-price-2 old-price"> ৳{price}</span>
               </>
             ) : (
-              <span className="tp-product-price-2 new-price">${price}</span>
+              <span className="tp-product-price-2 new-price">৳{price}</span>
             )}
           </div>
           <p>{description.substring(0, 100)}</p>

@@ -6,7 +6,7 @@ import ProfileInfo from "./profile-info";
 import ChangePassword from "./change-password";
 import MyOrders from "./my-orders";
 
-const ProfileArea = ({orderData}) => {
+const ProfileArea = ({ orderData }) => {
   return (
     <>
       <section className="profile__area pt-120 pb-120">

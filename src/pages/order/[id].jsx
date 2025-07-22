@@ -13,20 +13,31 @@ import ErrorMsg from "@/components/common/error-msg";
 import { useGetUserOrderByIdQuery } from "@/redux/features/order/orderApi";
 import PrdDetailsLoader from "@/components/loader/prd-details-loader";
 
-
 const SingleOrder = ({ params }) => {
   const orderId = params.id;
   const printRef = useRef();
   const { data: order, isError, isLoading } = useGetUserOrderByIdQuery(orderId);
   let content = null;
   if (isLoading) {
-    content = <PrdDetailsLoader loading={isLoading}/>
+    content = <PrdDetailsLoader loading={isLoading} />;
   }
   if (isError) {
     content = <ErrorMsg msg="There was an error" />;
   }
   if (!isLoading && !isError) {
-    const { name, country, city, contact, invoice, createdAt, cart, shippingCost, discount, totalAmount,paymentMethod} = order.order;
+    const {
+      name,
+      country,
+      city,
+      contact,
+      invoice,
+      createdAt,
+      cart,
+      shippingCost,
+      discount,
+      totalAmount,
+      paymentMethod,
+    } = order.order;
     content = (
       <>
         <section className="invoice__area pt-120 pb-120">
@@ -35,12 +46,18 @@ const SingleOrder = ({ params }) => {
               <div className="row">
                 <div className="col-xl-12">
                   <div className="invoice_msg mb-40">
-                    <p className="text-black alert alert-success">Thank you <strong>{name}</strong> Your order have been received ! </p>
+                    <p className="text-black alert alert-success">
+                      Thank you <strong>{name}</strong> Your order have been
+                      received !{" "}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div ref={printRef} className="invoice__wrapper grey-bg-2 pt-40 pb-40 pl-40 pr-40 tp-invoice-print-wrapper">
+            <div
+              ref={printRef}
+              className="invoice__wrapper grey-bg-2 pt-40 pb-40 pl-40 pr-40 tp-invoice-print-wrapper"
+            >
               <div className="invoice__header-wrapper border-2 border-bottom border-white mb-40">
                 <div className="row">
                   <div className="col-xl-12">
@@ -49,12 +66,16 @@ const SingleOrder = ({ params }) => {
                         <div className="col-md-4 col-sm-6">
                           <div className="invoice__left">
                             <Image src={logo} alt="logo" />
-                            <p>2879 Elk Creek Road <br /> Stone Mountain, Georgia </p>
+                            <p>
+                              2879 Elk Creek Road <br /> Stone Mountain, Georgia{" "}
+                            </p>
                           </div>
                         </div>
                         <div className="col-md-8 col-sm-6">
                           <div className="invoice__right mt-15 mt-sm-0 text-sm-end">
-                            <h3 className="text-uppercase font-70 mb-20">Invoice</h3>
+                            <h3 className="text-uppercase font-70 mb-20">
+                              Invoice
+                            </h3>
                           </div>
                         </div>
                       </div>
@@ -78,7 +99,8 @@ const SingleOrder = ({ params }) => {
                         <strong>Invoice ID:</strong> #{invoice}
                       </p>
                       <p className="mb-0">
-                        <strong>Date:</strong> {dayjs(createdAt).format("MMMM D, YYYY")}
+                        <strong>Date:</strong>{" "}
+                        {dayjs(createdAt).format("MMMM D, YYYY")}
                       </p>
                     </div>
                   </div>
@@ -101,8 +123,8 @@ const SingleOrder = ({ params }) => {
                         <td>{i + 1}</td>
                         <td>{item.title}</td>
                         <td>{item.orderQuantity}</td>
-                        <td>${item.price}</td>
-                        <td>${item.price * item.orderQuantity}</td>
+                        <td>৳{item.price}</td>
+                        <td>৳{item.price * item.orderQuantity}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -113,32 +135,33 @@ const SingleOrder = ({ params }) => {
                   <div className="col-lg-3 col-md-4">
                     <div className="invoice__payment-method mb-30">
                       <h5 className="mb-0">Payment Method</h5>
-                      <p className="tp-font-medium text-uppercase">{paymentMethod}</p>
+                      <p className="tp-font-medium text-uppercase">
+                        {paymentMethod}
+                      </p>
                     </div>
                   </div>
                   <div className="col-lg-3 col-md-4">
                     <div className="invoice__shippint-cost mb-30">
                       <h5 className="mb-0">Shipping Cost</h5>
-                      <p className="tp-font-medium">${shippingCost}</p>
+                      <p className="tp-font-medium">৳{shippingCost}</p>
                     </div>
                   </div>
                   <div className="col-lg-3 col-md-4">
                     <div className="invoice__discount-cost mb-30">
                       <h5 className="mb-0">Discount</h5>
-                      <p className="tp-font-medium">${discount.toFixed(2)}</p>
+                      <p className="tp-font-medium">৳{discount.toFixed(2)}</p>
                     </div>
                   </div>
                   <div className="col-lg-3 col-md-4">
                     <div className="invoice__total-ammount mb-30">
                       <h5 className="mb-0">Total Ammount</h5>
                       <p className="tp-font-medium text-danger">
-                        <strong>${parseInt(totalAmount).toFixed(2)}</strong>
+                        <strong>৳{parseInt(totalAmount).toFixed(2)}</strong>
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
             <div className="invoice__print text-end mt-3">
               <div className="row">
@@ -164,7 +187,6 @@ const SingleOrder = ({ params }) => {
           </div>
         </section>
       </>
-
     );
   }
   return (
