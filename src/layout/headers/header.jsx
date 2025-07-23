@@ -14,15 +14,27 @@ import HeaderTopRight from "./header-com/header-top-right";
 import HeaderMainRight from "./header-com/header-main-right";
 import CartMiniSidebar from "@/components/common/cart-mini-sidebar";
 import HeaderSearchForm from "@/components/forms/header-search-form";
-import { CartTwo, CategoryMenu, Compare, Menu, Phone, ShippingCar, Wishlist } from "@/svg";
+import {
+  CartTwo,
+  CategoryMenu,
+  Compare,
+  Menu,
+  Phone,
+  ShippingCar,
+  Wishlist,
+} from "@/svg";
+import { useGetCategoriesHierarchyQuery } from "@/redux/features/categoryApi";
 
 const Header = () => {
   const { wishlist } = useSelector((state) => state.wishlist);
+  const { data } = useGetCategoriesHierarchyQuery();
   const [isOffCanvasOpen, setIsCanvasOpen] = useState(false);
   const [isCategoryActive, setIsCategoryActive] = useState(false);
   const { quantity } = useCartInfo();
   const { sticky } = useSticky();
   const dispatch = useDispatch();
+
+  console.log("data-categories~~", data);
   return (
     <>
       <header>
@@ -89,7 +101,10 @@ const Header = () => {
                         All Departments
                       </button>
                       <nav className="tp-category-menu-content">
-                        <HeaderCategory categoryType="electronics" isCategoryActive={isCategoryActive} />
+                        <HeaderCategory
+                          categoryType="electronics"
+                          isCategoryActive={isCategoryActive}
+                        />
                       </nav>
                     </div>
                     {/* category end */}
@@ -124,7 +139,10 @@ const Header = () => {
       </header>
 
       {/* sticky header start */}
-      <div id="header-sticky-2" className={`tp-header-sticky-area ${sticky ? 'header-sticky-2' : ''}`}>
+      <div
+        id="header-sticky-2"
+        className={`tp-header-sticky-area ${sticky ? "header-sticky-2" : ""}`}
+      >
         <div className="container">
           <div className="tp-mega-menu-wrapper p-relative">
             <div className="row align-items-center">
@@ -152,17 +170,27 @@ const Header = () => {
                   <div className="tp-header-action-item d-none d-lg-block">
                     <Link href="/wishlist" className="tp-header-action-btn">
                       <Wishlist />
-                      <span className="tp-header-action-badge">{wishlist.length}</span>
+                      <span className="tp-header-action-badge">
+                        {wishlist.length}
+                      </span>
                     </Link>
                   </div>
                   <div className="tp-header-action-item">
-                    <button onClick={() => dispatch(openCartMini())} type="button" className="tp-header-action-btn cartmini-open-btn">
+                    <button
+                      onClick={() => dispatch(openCartMini())}
+                      type="button"
+                      className="tp-header-action-btn cartmini-open-btn"
+                    >
                       <CartTwo />
                       <span className="tp-header-action-badge">{quantity}</span>
                     </button>
                   </div>
                   <div className="tp-header-action-item d-lg-none">
-                    <button onClick={() => setIsCanvasOpen(true)} type="button" className="tp-header-action-btn tp-offcanvas-open-btn">
+                    <button
+                      onClick={() => setIsCanvasOpen(true)}
+                      type="button"
+                      className="tp-header-action-btn tp-offcanvas-open-btn"
+                    >
                       <Menu />
                     </button>
                   </div>
@@ -179,7 +207,11 @@ const Header = () => {
       {/* cart mini sidebar end */}
 
       {/* off canvas start */}
-      <OffCanvas isOffCanvasOpen={isOffCanvasOpen} setIsCanvasOpen={setIsCanvasOpen} categoryType="electronics" />
+      <OffCanvas
+        isOffCanvasOpen={isOffCanvasOpen}
+        setIsCanvasOpen={setIsCanvasOpen}
+        categoryType="electronics"
+      />
       {/* off canvas end */}
     </>
   );

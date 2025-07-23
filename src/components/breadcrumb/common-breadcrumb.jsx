@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const CommonBreadcrumb = ({
@@ -20,7 +21,7 @@ const CommonBreadcrumb = ({
               <h3 className="breadcrumb__title">{title}</h3>
               <div className="breadcrumb__list">
                 <span>
-                  <a href="#">Home</a>
+                  <Link href="/">Home</Link>
                 </span>
                 <span>{subtitle}</span>
               </div>

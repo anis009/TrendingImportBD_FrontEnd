@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Pagination from "@/ui/Pagination";
 import ProductItem from "../products/fashion/product-item";
 import CategoryFilter from "./shop-filter/category-filter";
-import ColorFilter from "./shop-filter/color-filter";
+// import ColorFilter from "./shop-filter/color-filter";
 import PriceFilter from "./shop-filter/price-filter";
 import ProductBrand from "./shop-filter/product-brand";
 import StatusFilter from "./shop-filter/status-filter";
@@ -13,7 +13,8 @@ import ShopTopRight from "./shop-top-right";
 import ResetButton from "./shop-filter/reset-button";
 
 const ShopArea = ({ all_products, products, otherProps }) => {
-  const {priceFilterValues,selectHandleFilter,currPage,setCurrPage} = otherProps;
+  const { priceFilterValues, selectHandleFilter, currPage, setCurrPage } =
+    otherProps;
   const [filteredRows, setFilteredRows] = useState(products);
   const [pageStart, setPageStart] = useState(0);
   const [countOfPage, setCountOfPage] = useState(12);
@@ -45,13 +46,13 @@ const ShopArea = ({ all_products, products, otherProps }) => {
                 {/* categories */}
                 <CategoryFilter setCurrPage={setCurrPage} />
                 {/* color */}
-                <ColorFilter setCurrPage={setCurrPage} />
+                {/* <ColorFilter setCurrPage={setCurrPage} /> */}
                 {/* product rating */}
                 <TopRatedProducts />
                 {/* brand */}
                 <ProductBrand setCurrPage={setCurrPage} />
                 {/* reset filter */}
-                <ResetButton/>
+                <ResetButton />
               </div>
             </div>
             <div className="col-xl-9 col-lg-8">

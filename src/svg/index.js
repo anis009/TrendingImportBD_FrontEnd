@@ -159,3 +159,21 @@ export {
   Email,
   Location,
 };
+
+export const Grid = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
+  </svg>
+);
+
+export const ChevronDown = ({ style }) => (
+  <svg
+    width="12"
+    height="12"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    style={style}
+  >
+    <path d="M7 10l5 5 5-5z" />
+  </svg>
+);

@@ -19,6 +19,9 @@ export const categoryApi = apiSlice.injectEndpoints({
     getProductTypeCategory: builder.query({
       query: (type) => `${BASE_URL}/api/category/show/${type}`,
     }),
+    getCategoriesHierarchy: builder.query({
+      query: (type) => `${BASE_URL}/api/categories/hierarchy`,
+    }),
   }),
 });
 
@@ -26,4 +29,5 @@ export const {
   useAddCategoryMutation,
   useGetProductTypeCategoryQuery,
   useGetShowCategoryQuery,
+  useGetCategoriesHierarchyQuery,
 } = categoryApi;
