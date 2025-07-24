@@ -20,6 +20,8 @@ const CheckoutOrderArea = ({ checkoutData }) => {
     discountAmount,
   } = checkoutData;
   const { cart_products } = useSelector((state) => state.cart);
+
+  console.log("cart_products:", cart_products);
   const { total } = useCartInfo();
   return (
     <div className="tp-checkout-place white-bg">
@@ -27,86 +29,93 @@ const CheckoutOrderArea = ({ checkoutData }) => {
 
       <div className="tp-order-info-list">
         <ul>
-          {/*  header */}
-          <li className="tp-order-info-list-header">
-            <h4>Product</h4>
-            <h4>Total</h4>
-          </li>
+          {/* Calculate subtotal and discounts */}
+          {(() => {
+            let subtotal = 0;
+            let totalItemDiscount = 0;
+            cart_products.forEach((item) => {
+              const itemSubtotal = item.price * item.orderQuantity;
+              subtotal += itemSubtotal;
+              if (item.discount && item.discount > 0) {
+                totalItemDiscount +=
+                  item.price * (item.discount / 100) * item.orderQuantity;
+              }
+            });
 
-          {/*  item list */}
-          {cart_products.map((item) => (
-            <li key={item._id} className="tp-order-info-list-desc">
-              <p>
-                {item.title} <span> x {item.orderQuantity}</span>
-              </p>
-              <span>৳{item.price.toFixed(2)}</span>
-            </li>
-          ))}
+            // Use coupon discount if present, otherwise use per-item discount
+            const showCouponDiscount = discountAmount > 0;
+            const discountToShow = showCouponDiscount
+              ? discountAmount
+              : totalItemDiscount;
+            const totalToShow = subtotal - discountToShow + shippingCost;
 
-          {/*  shipping */}
-          <li className="tp-order-info-list-shipping">
-            <span>Shipping</span>
-            <div className="tp-order-info-list-shipping-item d-flex flex-column align-items-end">
-              <span>
-                <input
-                  {...register(`shippingOption`, {
-                    required: `Shipping Option is required!`,
-                  })}
-                  id="flat_shipping"
-                  type="radio"
-                  name="shippingOption"
-                />
-                <label
-                  onClick={() => handleShippingCost(60)}
-                  htmlFor="flat_shipping"
-                >
-                  Delivery: Today Cost :<span>৳60.00</span>
-                </label>
-                <ErrorMsg msg={errors?.shippingOption?.message} />
-              </span>
-              <span>
-                <input
-                  {...register(`shippingOption`, {
-                    required: `Shipping Option is required!`,
-                  })}
-                  id="flat_rate"
-                  type="radio"
-                  name="shippingOption"
-                />
-                <label
-                  onClick={() => handleShippingCost(20)}
-                  htmlFor="flat_rate"
-                >
-                  Delivery: 7 Days Cost: <span>৳20.00</span>
-                </label>
-                <ErrorMsg msg={errors?.shippingOption?.message} />
-              </span>
-            </div>
-          </li>
+            return (
+              <>
+                {/*  header */}
+                <li className="tp-order-info-list-header">
+                  <h4>Product</h4>
+                  <h4>Total</h4>
+                </li>
 
-          {/*  subtotal */}
-          <li className="tp-order-info-list-subtotal">
-            <span>Subtotal</span>
-            <span>৳{total.toFixed(2)}</span>
-          </li>
+                {/*  item list */}
+                {cart_products.map((item) => {
+                  const hasDiscount = !!item.discount && item.discount > 0;
+                  const discountAmount = hasDiscount
+                    ? item.price * (item.discount / 100)
+                    : 0;
+                  const discountedPrice = hasDiscount
+                    ? (item.price - discountAmount) * item.orderQuantity
+                    : item.price * item.orderQuantity;
 
-          {/*  shipping cost */}
-          <li className="tp-order-info-list-subtotal">
-            <span>Shipping Cost</span>
-            <span>৳{shippingCost.toFixed(2)}</span>
-          </li>
+                  return (
+                    <li key={item._id} className="tp-order-info-list-desc">
+                      <p>
+                        {item.title} <span> x {item.orderQuantity}</span>
+                        {hasDiscount && (
+                          <span
+                            style={{
+                              color: "#4CAF50",
+                              fontSize: "12px",
+                              marginLeft: "8px",
+                            }}
+                          >
+                            (Discount: {item.discount}%)
+                          </span>
+                        )}
+                      </p>
+                      <span>৳{discountedPrice.toFixed(2)}</span>
+                    </li>
+                  );
+                })}
 
-          {/* discount */}
-          <li className="tp-order-info-list-subtotal">
-            <span>Discount</span>
-            <span>৳{discountAmount.toFixed(2)}</span>
-          </li>
+                {/*  subtotal */}
+                <li className="tp-order-info-list-subtotal">
+                  <span>Subtotal</span>
+                  <span>৳{subtotal.toFixed(2)}</span>
+                </li>
 
-          {/* total */}
-          <li className="tp-order-info-list-total">
-            <span>Total</span>
-            <span>৳{parseFloat(cartTotal).toFixed(2)}</span>
-          </li>
+                {/*  shipping cost */}
+                <li className="tp-order-info-list-subtotal">
+                  <span>Shipping Cost</span>
+                  <span>৳{shippingCost.toFixed(2)}</span>
+                </li>
+
+                {/* discount */}
+                {discountToShow > 0 && (
+                  <li className="tp-order-info-list-subtotal">
+                    <span>Discount</span>
+                    <span>-৳{discountToShow.toFixed(2)}</span>
+                  </li>
+                )}
+
+                {/* total */}
+                <li className="tp-order-info-list-total">
+                  <span>Total</span>
+                  <span>৳{totalToShow.toFixed(2)}</span>
+                </li>
+              </>
+            );
+          })()}
         </ul>
       </div>
       <div className="tp-checkout-payment">

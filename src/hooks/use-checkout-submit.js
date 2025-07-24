@@ -10,7 +10,10 @@ import useCartInfo from "./use-cart-info";
 import { set_shipping } from "@/redux/features/order/orderSlice";
 import { set_coupon } from "@/redux/features/coupon/couponSlice";
 import { notifyError, notifySuccess } from "@/utils/toast";
-import {useCreatePaymentIntentMutation,useSaveOrderMutation} from "@/redux/features/order/orderApi";
+import {
+  useCreatePaymentIntentMutation,
+  useSaveOrderMutation,
+} from "@/redux/features/order/orderApi";
 import { useGetOfferCouponsQuery } from "@/redux/features/coupon/couponApi";
 
 const useCheckoutSubmit = () => {
@@ -51,14 +54,19 @@ const useCheckoutSubmit = () => {
   // showCard
   const [showCard, setShowCard] = useState(false);
   // coupon apply message
-  const [couponApplyMsg,setCouponApplyMsg] = useState("");
+  const [couponApplyMsg, setCouponApplyMsg] = useState("");
 
   const dispatch = useDispatch();
   const router = useRouter();
   const stripe = useStripe();
   const elements = useElements();
 
-  const {register,handleSubmit,setValue,formState: { errors }} = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
   let couponRef = useRef("");
 
@@ -82,21 +90,51 @@ const useCheckoutSubmit = () => {
 
   //calculate total and discount value
   useEffect(() => {
+    // Calculate subtotal with per-item discounts
+    let subTotalWithItemDiscounts = 0;
+    let totalItemDiscounts = 0;
+
+    // Calculate totals with per-item discounts
+    cart_products?.forEach((item) => {
+      const hasDiscount = !!item.discount && item.discount > 0;
+      const itemDiscountAmount = hasDiscount
+        ? item.price * (item.discount / 100)
+        : 0;
+      const discountedPrice = hasDiscount
+        ? (item.price - itemDiscountAmount) * item.orderQuantity
+        : item.price * item.orderQuantity;
+
+      subTotalWithItemDiscounts += discountedPrice;
+      totalItemDiscounts += itemDiscountAmount * item.orderQuantity;
+    });
+
+    // Filter products for coupon discount (applied on already discounted prices)
     const result = cart_products?.filter(
       (p) => p.productType === discountProductType
     );
-    const discountProductTotal = result?.reduce(
-      (preValue, currentValue) =>
-        preValue + currentValue.price * currentValue.orderQuantity,
-      0
+
+    const discountProductTotal = result?.reduce((preValue, currentValue) => {
+      const hasDiscount = !!currentValue.discount && currentValue.discount > 0;
+      const itemDiscountAmount = hasDiscount
+        ? currentValue.price * (currentValue.discount / 100)
+        : 0;
+      const discountedPrice = hasDiscount
+        ? (currentValue.price - itemDiscountAmount) * currentValue.orderQuantity
+        : currentValue.price * currentValue.orderQuantity;
+
+      return preValue + discountedPrice;
+    }, 0);
+
+    let subTotal = Number(
+      (subTotalWithItemDiscounts + shippingCost).toFixed(2)
     );
-    let totalValue = "";
-    let subTotal = Number((total + shippingCost).toFixed(2));
-    let discountTotal = Number(
+    let couponDiscountTotal = Number(
       discountProductTotal * (discountPercentage / 100)
     );
-    totalValue = Number(subTotal - discountTotal);
-    setDiscountAmount(discountTotal);
+
+    let totalValue = Number(subTotal - couponDiscountTotal);
+
+    setDiscountAmount(couponDiscountTotal + totalItemDiscounts);
     setCartTotal(totalValue);
   }, [
     total,
@@ -160,14 +198,16 @@ const useCheckoutSubmit = () => {
       // notifySuccess(
       //   `Your Coupon ${result[0].title} is Applied on ${result[0].productType}!`
       // );
-      setCouponApplyMsg(`Your Coupon ${result[0].title} is Applied on ${result[0].productType} productType!`)
+      setCouponApplyMsg(
+        `Your Coupon ${result[0].title} is Applied on ${result[0].productType} productType!`
+      );
       setMinimumAmount(result[0]?.minimumAmount);
       setDiscountProductType(result[0].productType);
       setDiscountPercentage(result[0].discountPercentage);
       dispatch(set_coupon(result[0]));
       setTimeout(() => {
         couponRef.current.value = "";
-        setCouponApplyMsg("")
+        setCouponApplyMsg("");
       }, 5000);
     }
   };
@@ -211,10 +251,10 @@ const useCheckoutSubmit = () => {
       shippingCost: shippingCost,
       discount: discountAmount,
       totalAmount: cartTotal,
-      orderNote:data.orderNote,
+      orderNote: data.orderNote,
       user: `${user?._id}`,
     };
-    if (data.payment === 'Card') {
+    if (data.payment === "Card") {
       if (!stripe || !elements) {
         return;
       }
@@ -223,45 +263,43 @@ const useCheckoutSubmit = () => {
         return;
       }
       const { error, paymentMethod } = await stripe.createPaymentMethod({
-        type: 'card',
+        type: "card",
         card: card,
       });
       if (error && !paymentMethod) {
         setCardError(error.message);
         setIsCheckoutSubmit(false);
       } else {
-        setCardError('');
+        setCardError("");
         const orderData = {
           ...orderInfo,
           cardInfo: paymentMethod,
         };
 
-       return handlePaymentWithStripe(orderData);
+        return handlePaymentWithStripe(orderData);
       }
     }
-    if (data.payment === 'COD') {
+    if (data.payment === "COD") {
       saveOrder({
-        ...orderInfo
-      }).then(res => {
-        if(res?.error){
-        }
-        else {
-          localStorage.removeItem("cart_products")
+        ...orderInfo,
+      }).then((res) => {
+        if (res?.error) {
+        } else {
+          localStorage.removeItem("cart_products");
           localStorage.removeItem("couponInfo");
-          setIsCheckoutSubmit(false)
+          setIsCheckoutSubmit(false);
           notifySuccess("Your Order Confirmed!");
           router.push(`/order/${res.data?.order?._id}`);
         }
-      })
+      });
     }
   };
 
   // handlePaymentWithStripe
   const handlePaymentWithStripe = async (order) => {
     try {
-      const {paymentIntent, error:intentErr} = await stripe.confirmCardPayment(
-        clientSecret,
-        {
+      const { paymentIntent, error: intentErr } =
+        await stripe.confirmCardPayment(clientSecret, {
           payment_method: {
             card: elements.getElement(CardElement),
             billing_details: {
@@ -269,8 +307,7 @@ const useCheckoutSubmit = () => {
               email: user?.email,
             },
           },
-        },
-      );
+        });
       if (intentErr) {
         notifyError(intentErr.message);
       } else {
@@ -283,19 +320,16 @@ const useCheckoutSubmit = () => {
       };
 
       saveOrder({
-        ...orderData
-      })
-      .then((result) => {
-          if(result?.error){
-          }
-          else {
-            localStorage.removeItem("couponInfo");
-            notifySuccess("Your Order Confirmed!");
-            router.push(`/order/${result.data?.order?._id}`);
-          }
-        })
-       } 
-    catch (err) {
+        ...orderData,
+      }).then((result) => {
+        if (result?.error) {
+        } else {
+          localStorage.removeItem("couponInfo");
+          notifySuccess("Your Order Confirmed!");
+          router.push(`/order/${result.data?.order?._id}`);
+        }
+      });
+    } catch (err) {
       console.log(err);
     }
   };

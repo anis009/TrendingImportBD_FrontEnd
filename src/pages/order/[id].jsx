@@ -67,7 +67,7 @@ const SingleOrder = ({ params }) => {
                           <div className="invoice__left">
                             <Image src={logo} alt="logo" />
                             <p>
-                              2879 Elk Creek Road <br /> Stone Mountain, Georgia{" "}
+                              Mirpur Road-1 <br /> Dhaka Bangladesh
                             </p>
                           </div>
                         </div>
@@ -118,15 +118,47 @@ const SingleOrder = ({ params }) => {
                     </tr>
                   </thead>
                   <tbody className="table-group-divider">
-                    {cart.map((item, i) => (
-                      <tr key={i}>
-                        <td>{i + 1}</td>
-                        <td>{item.title}</td>
-                        <td>{item.orderQuantity}</td>
-                        <td>৳{item.price}</td>
-                        <td>৳{item.price * item.orderQuantity}</td>
-                      </tr>
-                    ))}
+                    {cart.map((item, i) => {
+                      const hasDiscount = !!item.discount && item.discount > 0;
+                      const itemDiscountAmount = hasDiscount
+                        ? item.price * (item.discount / 100)
+                        : 0;
+                      const discountedPrice = hasDiscount
+                        ? item.price - itemDiscountAmount
+                        : item.price;
+                      const totalAmount = discountedPrice * item.orderQuantity;
+
+                      return (
+                        <tr key={i}>
+                          <td>{i + 1}</td>
+                          <td>{item.title}</td>
+                          <td>{item.orderQuantity}</td>
+                          <td>
+                            {hasDiscount ? (
+                              <>
+                                <span
+                                  style={{
+                                    textDecoration: "line-through",
+                                    color: "#888",
+                                  }}
+                                >
+                                  ৳{item.price}
+                                </span>
+                                <br />
+                                <span>৳{discountedPrice.toFixed(2)}</span>
+                                <small className="text-success">
+                                  {" "}
+                                  ({item.discount}% off)
+                                </small>
+                              </>
+                            ) : (
+                              `৳${item.price}`
+                            )}
+                          </td>
+                          <td>৳{totalAmount.toFixed(2)}</td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

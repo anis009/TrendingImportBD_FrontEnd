@@ -1,8 +1,0 @@
-<!-- Simple SVG placeholder for products -->
-<svg width="350" height="310" viewBox="0 0 350 310" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="350" height="310" fill="#F3F4F6"/>
-  <circle cx="175" cy="130" r="20" fill="#D1D5DB"/>
-  <rect x="140" y="180" width="70" height="8" fill="#D1D5DB"/>
-  <rect x="150" y="195" width="50" height="6" fill="#D1D5DB"/>
-  <text x="175" y="250" text-anchor="middle" fill="#9CA3AF" font-size="12" font-family="Arial, sans-serif">No Image</text>
-</svg>
