@@ -16,3 +16,11 @@ export const getImageUrl = (url) => {
   // Otherwise, assume it's a relative path that needs /uploads/ prefix
   return "https://media.trendingimportbd.com/uploads/" + url;
 };
+
+export const getLimitText = (text, limit = 16) => {
+  if (!text) {
+    return "";
+  }
+
+  return text.length > limit ? text.slice(0, limit) + "..." : text;
+};

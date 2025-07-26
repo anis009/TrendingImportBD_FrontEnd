@@ -1,0 +1,22 @@
+/* Add to your global CSS or component CSS */
+.skeleton {
+  animation: skeleton-loading 1.2s linear infinite alternate;
+}
+@keyframes skeleton-loading {
+  0% {
+    background-color: #eee;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
+}
+
+.slickArrow {
+  position: absolute;
+  // ...your existing styles...
+}
+
+// Hide the default slick arrow icon inside the custom button
+.slickArrow::before {
+  display: none !important;
+}

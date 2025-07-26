@@ -1,10 +1,14 @@
 import React from "react";
 import Link from "next/link";
-
 import { LuBaggageClaim } from "react-icons/lu";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Colors from "@/constants/colors";
 import { useGetAllProductsQuery } from "@/redux/features/productApi";
 import ProductItem from "../products/beauty/product-item";
+import styles from "./offers99.module.scss";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Offers99 = () => {
   const { data, isError, isLoading } = useGetAllProductsQuery();
@@ -12,6 +16,77 @@ const Offers99 = () => {
   const products = data?.data || [];
 
   console.log("products~~", products);
+
+  // Custom Arrow Components
+  const CustomPrevArrow = (props) => (
+    <button
+      {...props}
+      className={`${props.className} ${styles.slickArrow} ${styles.slickPrev}`}
+      style={{
+        ...props.style,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#EC1766",
+        border: "none",
+        borderRadius: "50%",
+        width: "36px", // smaller width
+        height: "36px", // smaller height
+        zIndex: 2,
+        left: "-18px", // adjust position if needed
+        top: "40%",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
+        cursor: "pointer",
+      }}
+      aria-label="Previous"
+    >
+      <FaChevronLeft color="#fff" size={18} /> {/* smaller icon */}
+    </button>
+  );
+
+  const CustomNextArrow = (props) => (
+    <button
+      {...props}
+      className={`${props.className} ${styles.slickArrow} ${styles.slickNext}`}
+      style={{
+        ...props.style,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#EC1766",
+        border: "none",
+        borderRadius: "50%",
+        width: "36px", // smaller width
+        height: "36px", // smaller height
+        zIndex: 2,
+        right: "-18px", // adjust position if needed
+        top: "40%",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
+        cursor: "pointer",
+      }}
+      aria-label="Next"
+    >
+      <FaChevronRight color="#fff" size={18} /> {/* smaller icon */}
+    </button>
+  );
+
+  const sliderSettings = {
+    dots: false,
+    infinite: products.length > 5,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    arrows: true,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
+    responsive: [
+      { breakpoint: 1200, settings: { slidesToShow: 4 } },
+      { breakpoint: 992, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 576, settings: { slidesToShow: 1 } },
+    ],
+  };
+
   return (
     <div className="tp-section-wrappser">
       <div className="container">
@@ -81,31 +156,55 @@ const Offers99 = () => {
           <hr className="mt-2" />
         </div>
 
-        {/* Products Grid */}
-        <div className="row">
+        {/* Products Slideshow */}
+        <Slider {...sliderSettings}>
           {products &&
             products.length > 0 &&
-            products.map((item) => {
-              return (
-                <div
-                  key={item._id}
-                  className="col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4"
-                >
-                  <ProductItem product={item} />
-                </div>
-              );
-            })}
-        </div>
+            products.map((item) => (
+              <div key={item._id} className="px-2">
+                <ProductItem product={item} />
+              </div>
+            ))}
+        </Slider>
 
         {/* Loading and Error States */}
         {isLoading && (
           <div className="row">
-            <div className="col-12 text-center py-5">
-              <div className="spinner-border text-primary" role="status">
-                <span className="visually-hidden">Loading...</span>
+            {[...Array(8)].map((_, idx) => (
+              <div
+                key={idx}
+                className="col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4"
+              >
+                <div className="card border-0 shadow-sm">
+                  <div
+                    className={`${styles.skeleton} ${styles["skeleton-img"]}`}
+                    style={{
+                      height: "180px",
+                      width: "100%",
+                      borderRadius: "8px",
+                    }}
+                  ></div>
+                  <div className="card-body">
+                    <div
+                      className={`${styles.skeleton} ${styles["skeleton-text"]} mb-2`}
+                      style={{
+                        height: "20px",
+                        width: "80%",
+                        borderRadius: "4px",
+                      }}
+                    ></div>
+                    <div
+                      className={`${styles.skeleton} ${styles["skeleton-text"]}`}
+                      style={{
+                        height: "16px",
+                        width: "60%",
+                        borderRadius: "4px",
+                      }}
+                    ></div>
+                  </div>
+                </div>
               </div>
-              <p className="mt-2 text-muted">Loading products...</p>
-            </div>
+            ))}
           </div>
         )}
 
