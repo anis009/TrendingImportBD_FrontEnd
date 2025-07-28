@@ -11,6 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import CommonBreadcrumb from "@/components/breadcrumb/common-breadcrumb";
+import { getImageUrl } from "@/utils/common";
 
 const CategoriesPage = () => {
   const {
@@ -94,10 +95,10 @@ const CategoriesPage = () => {
               {category.image && (
                 <div style={{ marginBottom: "15px" }}>
                   <Image
-                    src={category.image}
+                    src={getImageUrl(category.image)}
                     alt={category.title}
-                    width={60}
-                    height={60}
+                    width={80}
+                    height={80}
                     style={{
                       borderRadius: "50%",
                       border: "3px solid rgba(255,255,255,0.3)",
@@ -351,10 +352,10 @@ const CategoriesPage = () => {
             <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
               {category.image && (
                 <Image
-                  src={category.image}
+                  src={getImageUrl(category.image)}
                   alt={category.title}
-                  width={50}
-                  height={50}
+                  width={80}
+                  height={80}
                   style={{ borderRadius: "8px" }}
                 />
               )}
