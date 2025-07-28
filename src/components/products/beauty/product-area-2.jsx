@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ProductItem from "./product-item";
 import ErrorMsg from "@/components/common/error-msg";
-import { useGetProductTypeQuery } from "@/redux/features/productApi";
+import { useGetAllProductsQuery } from "@/redux/features/productApi";
 import { HomeThreePrdTwoLoader } from "@/components/loader";
 
 // tabs
@@ -13,7 +13,7 @@ const ProductAreaTwo = () => {
     data: products,
     isError,
     isLoading,
-  } = useGetProductTypeQuery({ type: "beauty" });
+  } = useGetAllProductsQuery(undefined);
   const activeRef = useRef(null);
   const marker = useRef(null);
 
@@ -59,11 +59,11 @@ const ProductAreaTwo = () => {
         .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     } else if (activeTab === "Beauty") {
       product_items = products.data.filter(
-        (p) => p.category.name === "Discover Skincare"
+        (p) => p.categories.title === "Discover Skincare"
       );
     } else if (activeTab === "Cosmetics") {
       product_items = products.data.filter(
-        (p) => p.category.name === "Awesome Lip Care"
+        (p) => p.categories.title === "Awesome Lip Care"
       );
     } else {
       product_items = products.data;

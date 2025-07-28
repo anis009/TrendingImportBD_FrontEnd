@@ -15,6 +15,8 @@ import Footer from "@/layout/footers/footer";
 import FlashSaleCarousel from "@/components/common/flash-sale-carousel";
 import Offers99 from "@/components/offers/offers99";
 import TopCategories from "@/components/TopCategories/TopCategories";
+import Offers199 from "@/components/offers/offers199";
+import EidSalamiOffer from "@/components/offers/EidSalamiOffer";
 
 export default function Home() {
   return (
@@ -24,6 +26,9 @@ export default function Home() {
       <FlashSaleCarousel />
       <Offers99 />
       <TopCategories />
+      <EidSalamiOffer />
+      <br />
+      <Offers199 />
       <BeautyBanner />
       <BeautyCategory />
       <BeautyFeatured />

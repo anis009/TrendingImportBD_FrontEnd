@@ -3,16 +3,17 @@ import Link from "next/link";
 // internal
 import ErrorMsg from "../common/error-msg";
 import { ArrowRightSm, ArrowRightSmTwo } from "@/svg";
-import { useGetProductTypeCategoryQuery } from "@/redux/features/categoryApi";
+import { useGetListCategoryQuery } from "@/redux/features/categoryApi";
 import { HomeThreeCategoryLoader } from "../loader";
 import { useRouter } from "next/router";
+import { getImageUrl } from "@/utils/common";
 const BeautyCategory = () => {
   const router = useRouter();
   const {
-    data: categories,
+    data: categories = {},
     isLoading,
     isError,
-  } = useGetProductTypeCategoryQuery("beauty");
+  } = useGetListCategoryQuery();
 
   // handle category route
   const handleCategoryRoute = (title) => {
@@ -24,26 +25,28 @@ const BeautyCategory = () => {
         .join("-")}`
     );
   };
+
+  console.log("categories~", categories);
   // decide what to render
   let content = null;
 
   if (isLoading) {
-    content = <HomeThreeCategoryLoader loading={isLoading}/>;
+    content = <HomeThreeCategoryLoader loading={isLoading} />;
   }
   if (!isLoading && isError) {
     content = <ErrorMsg msg="There was an error" />;
   }
-  if (!isLoading && !isError && categories?.result?.length === 0) {
+  if (!isLoading && !isError && categories?.data?.length === 0) {
     content = <ErrorMsg msg="No Category found!" />;
   }
-  if (!isLoading && !isError && categories?.result?.length > 0) {
-    const category_items = categories.result;
+  if (!isLoading && !isError && categories?.data?.length > 0) {
+    const category_items = categories.data;
     content = category_items.map((item) => (
       <div key={item._id} className="col-lg-3 col-sm-6">
         <div className="tp-category-item-3 p-relative black-bg text-center z-index-1 fix mb-30">
           <div
             className="tp-category-thumb-3 include-bg"
-            style={{ backgroundImage: `url(${item.img})` }}
+            style={{ backgroundImage: `url(${getImageUrl(item.image)})` }}
           ></div>
           <div className="tp-category-content-3 transition-3">
             <h3 className="tp-category-title-3">
@@ -51,11 +54,12 @@ const BeautyCategory = () => {
                 className="cursor-pointer"
                 onClick={() => handleCategoryRoute(item.parent)}
               >
-                {item.parent}
+                {item.title}
               </a>
             </h3>
             <span className="tp-categroy-ammount-3">
-              {item.products.length} Products
+              0 Products
+              {/* {item.products.length} Products */}
             </span>
             <div className="tp-category-btn-3">
               <a
@@ -71,6 +75,8 @@ const BeautyCategory = () => {
       </div>
     ));
   }
+
+  console.log("content~~", content);
   return (
     <>
       <section className="tp-category-area pt-95">

@@ -147,23 +147,23 @@ const ProductItem = ({ product, prdCenter = false, primary_style = false }) => {
                     marginRight: "8px",
                   }}
                 >
-                  ${price.toFixed(2)}
+                  ৳{price.toFixed(2)}
                 </span>
                 <span
                   className="tp-product-price-3"
                   style={{ color: "#d32f2f", fontWeight: "bold" }}
                 >
-                  ${(price - price * (discount / 100)).toFixed(2)}
+                  ৳{(price - price * (discount / 100)).toFixed(2)}
                 </span>
                 <small className="text-success ms-1">({discount}% off)</small>
               </>
             ) : (
-              <span className="tp-product-price-3">${price.toFixed(2)}</span>
+              <span className="tp-product-price-3">৳{price.toFixed(2)}</span>
             )}
           </div>
         </div>
       </div>
-      <div className="add-cart-wrapper mt-3">
+      <div className="add-cart-wrapper mt-3 mb-4">
         {isAddedToCart ? (
           <Link
             href="/cart"
