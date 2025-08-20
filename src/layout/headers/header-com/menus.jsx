@@ -16,37 +16,55 @@ import insta_6 from "@assets/img/instagram/3/instagram-6.jpg";
 
 // instagram data
 const instagram_data = [
-  { id: 1, link: "https://www.instagram.com/", img: insta_1 },
-  { id: 2, link: "https://www.instagram.com/", img: insta_3 },
-  { id: 3, link: "https://www.instagram.com/", img: insta_5 },
-  { id: 4, link: "https://www.instagram.com/", img: insta_6 },
+  {
+    id: 1,
+    link: "https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw==",
+    img: insta_1,
+  },
+  {
+    id: 2,
+    link: "https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw==",
+    img: insta_3,
+  },
+  {
+    id: 3,
+    link: "https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw==",
+    img: insta_5,
+  },
+  {
+    id: 4,
+    link: "https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw==",
+    img: insta_6,
+  },
 ];
 const Menus = () => {
-  const { data: products, isError, isLoading } = useGetProductTypeQuery({
-    type: 'electronics',
-    query: 'new=true'
+  const {
+    data: products,
+    isError,
+    isLoading,
+  } = useGetProductTypeQuery({
+    type: "electronics",
+    query: "new=true",
   });
-  
+
   // decide what to render
   let content = null;
-  
+
   if (isLoading) {
-    content = (
-      <HomeNewArrivalPrdLoader loading={isLoading} />
-    );
+    content = <HomeNewArrivalPrdLoader loading={isLoading} />;
   }
-  
+
   if (!isLoading && isError) {
     content = <ErrorMsg msg="There was an error" />;
   }
-  
+
   if (!isLoading && !isError && products?.data?.length === 0) {
     content = <ErrorMsg msg="No Products found!" />;
   }
-  
+
   if (!isLoading && !isError && products?.data?.length > 0) {
     const product_items = products.data;
-  
+
     content = (
       <div className="row">
         {product_items.slice(0, 4).map((item) => (
@@ -67,28 +85,34 @@ const Menus = () => {
           <li key={menu.id} className="has-dropdown has-mega-menu">
             <Link href={menu.link}>{menu.title}</Link>
             <div className="home-menu tp-submenu tp-mega-menu">
-
-
-            <div className="container-fluid">
-          <div className="row row-cols-lg-4 row-cols-sm-2 row-cols-1 gx-2 gy-2 gy-lg-0">
-            {instagram_data.map((item) => (
-              <div className="col" key={item.id}>
-                <div className="tp-instagram-item-2">
-                  <Image src={item.img} alt="instagram img" style={{width:'100%',height:'100%'}} />
-                  <div className="tp-instagram-icon-2">
-                    <a href={item.link} target="_blank" className="popup-image">
-                      <i className="fa-brands fa-instagram"></i>
-                    </a>
-                  </div>
+              <div className="container-fluid">
+                <div className="row row-cols-lg-4 row-cols-sm-2 row-cols-1 gx-2 gy-2 gy-lg-0">
+                  {instagram_data.map((item) => (
+                    <div className="col" key={item.id}>
+                      <div className="tp-instagram-item-2">
+                        <Image
+                          src={item.img}
+                          alt="instagram img"
+                          style={{ width: "100%", height: "100%" }}
+                        />
+                        <div className="tp-instagram-icon-2">
+                          <a
+                            href={item.link}
+                            target="_blank"
+                            className="popup-image"
+                          >
+                            <i className="fa-brands fa-instagram"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-            {/* <div className="tp-product-arrival-slider fix">
+              {/* <div className="tp-product-arrival-slider fix">
     {content}
   </div> */}
-                {/* <OfferCouponArea/> */}
+              {/* <OfferCouponArea/> */}
               <div className="row row-cols-1 row-cols-lg-4 row-cols-xl-4">
                 {menu.home_pages.map((home, i) => (
                   <div key={i} className="col">

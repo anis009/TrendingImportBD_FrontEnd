@@ -14,10 +14,16 @@ import { useState } from "react";
 
 export default function SearchPage({ query }) {
   const { searchText, productType } = query;
-  const { data: products, isError, isLoading } = useGetAllProductsQuery();
+  const {
+    data: products,
+    isError,
+    isLoading,
+  } = useGetAllProductsQuery({ searchText });
   const [shortValue, setShortValue] = useState("");
   const perView = 8;
   const [next, setNext] = useState(perView);
+
+  console.log("search-page~~", products);
 
   // selectShortHandler
   const shortHandler = (e) => {
@@ -44,30 +50,14 @@ export default function SearchPage({ query }) {
   }
 
   if (!isLoading && !isError && products?.data?.length > 0) {
-    let all_products = products.data;
-    let product_items = all_products;
+    let product_items = products.data;
 
-    if (searchText && !productType) {
-      product_items = all_products.filter((prd) =>
-        prd.title?.toLowerCase().includes(searchText?.toLowerCase())
-      );
-    }
-    if (searchText && productType) {
-      product_items = all_products
-        .filter(
-          (prd) => prd.productType?.toLowerCase() === productType?.toLowerCase()
-        )
-        .filter((p) =>
-          p?.title?.toLowerCase().includes(searchText?.toLowerCase())
-        );
-    }
-    // Price low to high
+    // Price sorting only (filtering is handled by backend)
     if (shortValue === "Price low to high") {
       product_items = product_items
         .slice()
         .sort((a, b) => Number(a.price) - Number(b.price));
     }
-    // Price high to low
     if (shortValue === "Price high to low") {
       product_items = product_items
         .slice()
@@ -97,7 +87,7 @@ export default function SearchPage({ query }) {
                             <div className="tp-shop-top-result">
                               <p>
                                 Showing 1–{product_items.length} of{" "}
-                                {all_products.length} results
+                                {product_items.length} results
                               </p>
                             </div>
                           </div>

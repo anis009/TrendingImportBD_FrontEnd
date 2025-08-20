@@ -24,3 +24,19 @@ export const getLimitText = (text, limit = 16) => {
 
   return text.length > limit ? text.slice(0, limit) + "..." : text;
 };
+
+export const objectToParams = (obj) => {
+  if (!obj || typeof obj !== "object") {
+    return "";
+  }
+
+  const params = new URLSearchParams();
+
+  Object.keys(obj).forEach((key) => {
+    if (obj[key] !== null && obj[key] !== undefined && obj[key] !== "") {
+      params.append(key, obj[key]);
+    }
+  });
+
+  return params.toString();
+};

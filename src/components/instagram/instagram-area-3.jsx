@@ -10,12 +10,36 @@ import insta_6 from "@assets/img/instagram/3/instagram-6.jpg";
 
 // instagram data
 const instagram_data = [
-  { id: 1, link: "https://www.instagram.com/", img: insta_1 },
-  { id: 2, link: "https://www.instagram.com/", img: insta_2 },
-  { id: 3, link: "https://www.instagram.com/", img: insta_3 },
-  { id: 4, link: "https://www.instagram.com/", img: insta_4 },
-  { id: 5, link: "https://www.instagram.com/", img: insta_5 },
-  { id: 6, link: "https://www.instagram.com/", img: insta_6 },
+  {
+    id: 1,
+    link: "https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw==",
+    img: insta_1,
+  },
+  {
+    id: 2,
+    link: "https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw==",
+    img: insta_2,
+  },
+  {
+    id: 3,
+    link: "https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw==",
+    img: insta_3,
+  },
+  {
+    id: 4,
+    link: "https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw==",
+    img: insta_4,
+  },
+  {
+    id: 5,
+    link: "https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw==",
+    img: insta_5,
+  },
+  {
+    id: 6,
+    link: "https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw==",
+    img: insta_6,
+  },
 ];
 
 const InstagramAreaThree = () => {
@@ -27,7 +51,11 @@ const InstagramAreaThree = () => {
             {instagram_data.map((item) => (
               <div className="col" key={item.id}>
                 <div className="tp-instagram-item-2">
-                  <Image src={item.img} alt="instagram img" style={{width:'100%',height:'100%'}} />
+                  <Image
+                    src={item.img}
+                    alt="instagram img"
+                    style={{ width: "100%", height: "100%" }}
+                  />
                   <div className="tp-instagram-icon-2">
                     <a href={item.link} target="_blank" className="popup-image">
                       <i className="fa-brands fa-instagram"></i>

@@ -226,7 +226,7 @@ const useCheckoutSubmit = () => {
     setValue("city", shipping_info.city);
     setValue("zipCode", shipping_info.zipCode);
     setValue("contactNo", shipping_info.contactNo);
-    setValue("email", shipping_info.email);
+    setValue("email", shipping_info.email || user?.email);
     setValue("orderNote", shipping_info.orderNote);
   }, [user, setValue, shipping_info, router]);
 
@@ -285,11 +285,15 @@ const useCheckoutSubmit = () => {
       }).then((res) => {
         if (res?.error) {
         } else {
+          const { data } = res.data;
           localStorage.removeItem("cart_products");
           localStorage.removeItem("couponInfo");
           setIsCheckoutSubmit(false);
           notifySuccess("Your Order Confirmed!");
-          router.push(`/order/${res.data?.order?._id}`);
+
+          console.log("response-order~~", data);
+          router.push(`/order/${data?._id}`);
+          // router.push(`/order/${res.data?.order?._id}`);
         }
       });
     }

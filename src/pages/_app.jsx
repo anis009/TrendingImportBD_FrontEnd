@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import ReactModal from "react-modal";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { ToastContainer } from "@/utils/toast";
 import "../styles/index.scss";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 if (typeof window !== "undefined") {
@@ -27,6 +28,17 @@ export default function App({ Component, pageProps }) {
         <Elements stripe={stripePromise}>
           <div id="root">
             <Component {...pageProps} />
+            <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
           </div>
         </Elements>
       </Provider>

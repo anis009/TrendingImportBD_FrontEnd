@@ -77,14 +77,14 @@ const ContactArea = () => {
 
                         <div className="tp-contact-social-icon">
                           <a
-                            href="https://www.facebook.com/trendingimportbd"
+                            href="https://www.facebook.com/share/1AAaKQbVMJ/"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
                             <i className="fa-brands fa-facebook-f"></i>
                           </a>
                           <a
-                            href="https://www.instagram.com/trendingimportbd"
+                            href="https://www.instagram.com/trendingimportbd/profilecard/?igsh=MTN5OWkxaWlmeDg0aw=="
                             target="_blank"
                             rel="noopener noreferrer"
                           >

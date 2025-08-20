@@ -1,7 +1,7 @@
 const social_data = [
   {
     id: 1,
-    link: "https://www.facebook.com",
+    link: "https://www.facebook.com/share/1AAaKQbVMJ/",
     icon: "fa-brands fa-facebook-f",
     title: "Facebook",
   },
@@ -13,9 +13,9 @@ const social_data = [
   },
   {
     id: 3,
-    link: "nkedin.com",
-    icon: "fa-brands fa-linkedin-in",
-    title: "Linkedin",
+    link: "https://www.threads.com/@trendingimportbd",
+    icon: "fa-brands fa-threads",
+    title: "Threads",
   },
   {
     id: 4,
