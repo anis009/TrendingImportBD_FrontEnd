@@ -34,7 +34,7 @@ const Header = () => {
   const { sticky } = useSticky();
   const dispatch = useDispatch();
 
-  console.log("data-categories~~", data);
+  // console.log("data-categories~~", data);
   return (
     <>
       <header>
