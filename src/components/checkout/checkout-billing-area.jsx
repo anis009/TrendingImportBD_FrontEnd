@@ -1,11 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ErrorMsg from "../common/error-msg";
 import { useSelector } from "react-redux";
+import divisionData from "../../../public/data/division.json";
+import districtData from "../../../public/data/district.json";
+import upzillaData from "../../../public/data/upzilla.json";
 
-const CheckoutBillingArea = ({ register, errors }) => {
+const CheckoutBillingArea = ({ register, errors, watch }) => {
   const { user } = useSelector((state) => state.auth);
+  const [filteredDistricts, setFilteredDistricts] = useState([]);
+  const [filteredUpzillas, setFilteredUpzillas] = useState([]);
+
+  // Watch for division and district changes
+  const selectedDivision = watch("division");
+  const selectedDistrict = watch("district");
 
   console.log("user~~", user);
+
+  // Filter districts based on selected division
+  useEffect(() => {
+    if (selectedDivision) {
+      // Find the division ID from the selected division name
+      const division = divisionData.divisions.find(
+        (div) => div.name === selectedDivision
+      );
+      if (division) {
+        // Filter districts that belong to this division
+        const districts = districtData.districts.filter(
+          (district) => district.division_id === division.id
+        );
+        setFilteredDistricts(districts);
+      }
+    } else {
+      setFilteredDistricts([]);
+    }
+  }, [selectedDivision]);
+
+  // Filter upzillas based on selected district
+  useEffect(() => {
+    if (selectedDistrict) {
+      // Find the district ID from the selected district name
+      const district = districtData.districts.find(
+        (dist) => dist.name === selectedDistrict
+      );
+      if (district) {
+        // Filter upzillas that belong to this district
+        const upzillas = upzillaData.upazilas.filter(
+          (upzilla) => upzilla.district_id === district.id
+        );
+        setFilteredUpzillas(upzillas);
+      }
+    } else {
+      setFilteredUpzillas([]);
+    }
+  }, [selectedDistrict]);
 
   return (
     <div className="tp-checkout-bill-area">
@@ -54,14 +101,98 @@ const CheckoutBillingArea = ({ register, errors }) => {
                 <label>
                   Country <span>*</span>
                 </label>
-                <input
-                  {...register("country", { required: `country is required!` })}
+                <select
+                  {...register("country", { required: `Country is required!` })}
                   name="country"
                   id="country"
-                  type="text"
-                  placeholder="United States (US)"
-                />
-                <ErrorMsg msg={errors?.lastName?.message} />
+                  className="tp-checkout-select"
+                  defaultValue="Bangladesh"
+                >
+                  <option value="">Select Country</option>
+                  <option value="Bangladesh">Bangladesh</option>
+                  <option value="India">India</option>
+                  <option value="Pakistan">Pakistan</option>
+                  <option value="Nepal">Nepal</option>
+                  <option value="Sri Lanka">Sri Lanka</option>
+                </select>
+                <ErrorMsg msg={errors?.country?.message} />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="tp-checkout-input">
+                <label>
+                  Division <span>*</span>
+                </label>
+                <select
+                  {...register("division", {
+                    required: `Division is required!`,
+                  })}
+                  name="division"
+                  id="division"
+                  className="tp-checkout-select"
+                >
+                  <option value="">Select Division</option>
+                  {divisionData.divisions.map((division) => (
+                    <option key={division.id} value={division.name}>
+                      {division.name} ({division.bn_name})
+                    </option>
+                  ))}
+                </select>
+                <ErrorMsg msg={errors?.division?.message} />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="tp-checkout-input">
+                <label>
+                  District <span>*</span>
+                </label>
+                <select
+                  {...register("district", {
+                    required: `District is required!`,
+                  })}
+                  name="district"
+                  id="district"
+                  className="tp-checkout-select"
+                  disabled={!selectedDivision}
+                >
+                  <option value="">
+                    {selectedDivision
+                      ? "Select District"
+                      : "Select Division First"}
+                  </option>
+                  {filteredDistricts.map((district) => (
+                    <option key={district.id} value={district.name}>
+                      {district.name} ({district.bn_name})
+                    </option>
+                  ))}
+                </select>
+                <ErrorMsg msg={errors?.district?.message} />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="tp-checkout-input">
+                <label>
+                  Upzilla <span>*</span>
+                </label>
+                <select
+                  {...register("upzilla", { required: `Upzilla is required!` })}
+                  name="upzilla"
+                  id="upzilla"
+                  className="tp-checkout-select"
+                  disabled={!selectedDistrict}
+                >
+                  <option value="">
+                    {selectedDistrict
+                      ? "Select Upzilla"
+                      : "Select District First"}
+                  </option>
+                  {filteredUpzillas.map((upzilla) => (
+                    <option key={upzilla.id} value={upzilla.name}>
+                      {upzilla.name} ({upzilla.bn_name})
+                    </option>
+                  ))}
+                </select>
+                <ErrorMsg msg={errors?.upzilla?.message} />
               </div>
             </div>
             <div className="col-md-12">

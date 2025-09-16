@@ -228,6 +228,7 @@ const WishlistItem = ({ product }) => {
             transition: "all 0.3s ease",
             boxShadow: "0 2px 4px rgba(0, 123, 255, 0.3)",
             margin: "0px 10px",
+            whiteSpace: "nowrap",
           }}
         >
           Add To Cart

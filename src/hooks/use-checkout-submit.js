@@ -65,6 +65,7 @@ const useCheckoutSubmit = () => {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -220,6 +221,9 @@ const useCheckoutSubmit = () => {
   //set values
   useEffect(() => {
     setValue("firstName", shipping_info.firstName);
+    setValue("district", shipping_info.district);
+    setValue("division", shipping_info.division);
+    setValue("upzilla", shipping_info.upzilla);
     setValue("lastName", shipping_info.lastName);
     setValue("country", shipping_info.country);
     setValue("address", shipping_info.address);
@@ -240,6 +244,9 @@ const useCheckoutSubmit = () => {
       address: data.address,
       contact: data.contactNo,
       email: data.email,
+      upzilla: data.upzilla,
+      district: data.district,
+      division: data.division,
       city: data.city,
       country: data.country,
       zipCode: data.zipCode,
@@ -254,6 +261,9 @@ const useCheckoutSubmit = () => {
       orderNote: data.orderNote,
       user: `${user?._id}`,
     };
+
+    // console.log("orderInfo~~", data);
+
     if (data.payment === "Card") {
       if (!stripe || !elements) {
         return;
@@ -282,20 +292,28 @@ const useCheckoutSubmit = () => {
     if (data.payment === "COD") {
       saveOrder({
         ...orderInfo,
-      }).then((res) => {
-        if (res?.error) {
-        } else {
-          const { data } = res.data;
-          localStorage.removeItem("cart_products");
-          localStorage.removeItem("couponInfo");
+      })
+        .then((res) => {
+          if (res?.error) {
+            setIsCheckoutSubmit(false);
+            notifyError(
+              res?.error?.data?.message || "Order failed. Please try again."
+            );
+          } else {
+            const { data: orderData } = res.data;
+            localStorage.removeItem("cart_products");
+            localStorage.removeItem("couponInfo");
+            setIsCheckoutSubmit(false);
+            notifySuccess("Your Order Confirmed!");
+            console.log("response-order~~", orderData);
+            router.push(`/order/${orderData?._id}`);
+          }
+        })
+        .catch((error) => {
           setIsCheckoutSubmit(false);
-          notifySuccess("Your Order Confirmed!");
-
-          console.log("response-order~~", data);
-          router.push(`/order/${data?._id}`);
-          // router.push(`/order/${res.data?.order?._id}`);
-        }
-      });
+          notifyError("Something went wrong. Please try again.");
+          console.error("Order error:", error);
+        });
     }
   };
 
@@ -350,6 +368,7 @@ const useCheckoutSubmit = () => {
     isCheckoutSubmit,
     setTotal,
     register,
+    watch,
     errors,
     cardError,
     submitHandler,

@@ -21,28 +21,43 @@ const schema = Yup.object().shape({
 
 const RegisterForm = () => {
   const [showPass, setShowPass] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [registerUser, {}] = useRegisterUserMutation();
   const router = useRouter();
   const { redirect } = router.query;
   // react hook form
-  const {register,handleSubmit,formState: { errors },reset} = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
     resolver: yupResolver(schema),
   });
   // on submit
   const onSubmit = (data) => {
+    setIsLoading(true);
     registerUser({
       name: data.name,
       email: data.email,
       password: data.password,
-    }).then((result) => {
-      if (result?.error) {
-        notifyError("Register Failed");
-      } else {
-        notifySuccess(result?.data?.message);
-        // router.push(redirect || "/");
-      }
-    });
-    reset();
+    })
+      .then((result) => {
+        if (result?.error) {
+          notifyError("Register Failed");
+        } else {
+          notifySuccess(result?.data?.message);
+          // router.push(redirect || "/");
+        }
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        notifyError("Registration failed. Please try again.");
+        setIsLoading(false);
+      })
+      .finally(() => {
+        reset();
+      });
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -117,8 +132,12 @@ const RegisterForm = () => {
         </div>
       </div>
       <div className="tp-login-bottom">
-        <button type="submit" className="tp-login-btn w-100">
-          Sign Up
+        <button
+          type="submit"
+          className="tp-login-btn w-100"
+          disabled={isLoading}
+        >
+          {isLoading ? "Signing Up..." : "Sign Up"}
         </button>
       </div>
     </form>

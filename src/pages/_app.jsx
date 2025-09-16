@@ -38,6 +38,9 @@ export default function App({ Component, pageProps }) {
               pauseOnFocusLoss
               draggable
               pauseOnHover
+              theme="light"
+              limit={3}
+              preventDuplicates={true}
             />
           </div>
         </Elements>

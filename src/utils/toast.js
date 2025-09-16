@@ -1,8 +1,9 @@
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const notifySuccess = (message) =>
-  toast.success(message, {
+const notifySuccess = (message) => {
+  if (!message) return;
+  return toast.success(message, {
     position: "top-center",
     autoClose: 3000,
     hideProgressBar: false,
@@ -10,10 +11,13 @@ const notifySuccess = (message) =>
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
+    theme: "light",
   });
+};
 
-const notifyError = (message) =>
-  toast.error(message, {
+const notifyError = (message) => {
+  if (!message) return;
+  return toast.error(message, {
     position: "top-center",
     autoClose: 3000,
     hideProgressBar: false,
@@ -21,6 +25,8 @@ const notifyError = (message) =>
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
+    theme: "light",
   });
+};
 
 export { ToastContainer, notifySuccess, notifyError };
