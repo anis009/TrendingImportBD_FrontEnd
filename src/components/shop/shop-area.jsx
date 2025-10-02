@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Pagination from "@/ui/Pagination";
 import ProductItem from "../products/fashion/product-item";
 import CategoryFilter from "./shop-filter/category-filter";
@@ -25,10 +25,16 @@ const ShopArea = ({ all_products, products, otherProps }) => {
     setCountOfPage(pageCount);
   };
 
-  // max price
-  const maxPrice = all_products.reduce((max, product) => {
-    return product.price > max ? product.price : max;
-  }, 0);
+  // max price - ensure we always have a valid max price
+  const maxPrice = useMemo(() => {
+    if (!all_products || all_products.length === 0) {
+      return 1000; // Default max price when no products
+    }
+    const max = all_products.reduce((max, product) => {
+      return product.price > max ? product.price : max;
+    }, 0);
+    return max > 0 ? max : 1000; // Ensure we have a valid max price
+  }, [all_products]);
   return (
     <>
       <section className="tp-shop-area pb-120">
@@ -77,7 +83,7 @@ const ShopArea = ({ all_products, products, otherProps }) => {
                     </div>
                   </div>
                 </div>
-                {products.length === 0 && <h2>No products found</h2>}
+                {/* {products.length === 0 && <h2>No products found</h2>} */}
                 {products.length > 0 && (
                   <div className="tp-shop-items-wrapper tp-shop-item-primary">
                     <div className="tab-content" id="productTabContent">

@@ -19,6 +19,7 @@ import MegaMenu from "@/components/common/mega-menu"; // Import the new componen
 
 const HeaderThree = () => {
   const { data } = useGetCategoriesHierarchyQuery();
+  const { user } = useSelector((state) => state.auth);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isOffCanvasOpen, setIsCanvasOpen] = useState(false);
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -101,6 +102,23 @@ const HeaderThree = () => {
                           {quantity}
                         </span>
                       </button>
+                    </div>
+                    <div className="tp-header-action-item d-none d-sm-block">
+                      {user?._id ? (
+                        <Link href="/profile" className="tp-header-action-btn">
+                          <i
+                            className="fa-solid fa-user"
+                            style={{ fontSize: "22px", cursor: "pointer" }}
+                          ></i>
+                        </Link>
+                      ) : (
+                        <Link href="/login" className="tp-header-action-btn">
+                          <i
+                            className="fa-solid fa-right-to-bracket"
+                            style={{ fontSize: "22px", cursor: "pointer" }}
+                          ></i>
+                        </Link>
+                      )}
                     </div>
                     <div className="tp-header-action-item d-lg-none">
                       <button

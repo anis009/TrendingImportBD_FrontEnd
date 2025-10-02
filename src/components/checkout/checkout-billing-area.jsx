@@ -14,7 +14,7 @@ const CheckoutBillingArea = ({ register, errors, watch }) => {
   const selectedDivision = watch("division");
   const selectedDistrict = watch("district");
 
-  console.log("user~~", user);
+  // console.log("user~~", user);
 
   // Filter districts based on selected division
   useEffect(() => {

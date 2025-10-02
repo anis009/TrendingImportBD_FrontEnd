@@ -43,11 +43,11 @@ const HeaderTwo = ({ style_2 = false }) => {
                 <div className="col-md-6">
                   <div className="tp-header-info d-flex align-items-center">
                     <div className="tp-header-info-item">
-                      <a href="#">
+                      <a href="https://www.facebook.com/timportbd">
                         <span>
                           <Facebook />
                         </span>{" "}
-                        7500k Followers
+                        20k Followers
                       </a>
                     </div>
                     <div className="tp-header-info-item">

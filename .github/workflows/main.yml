@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_MODE: "production"
+      NEXT_PUBLIC_NODE_ENV: "production"
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2

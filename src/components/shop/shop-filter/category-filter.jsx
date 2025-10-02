@@ -17,21 +17,21 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
   const dispatch = useDispatch();
 
   // handle category route
-  const handleCategoryRoute = (categorySlug) => {
+  const handleCategoryRoute = (categoryId) => {
     setCurrPage(1);
     router.push(
-      `/${shop_right ? "shop-right-sidebar" : "shop"}?category=${categorySlug}`
+      `/${shop_right ? "shop-right-sidebar" : "shop"}?category=${categoryId}`
     );
     dispatch(handleFilterSidebarClose());
   };
 
   // handle subcategory route
-  const handleSubCategoryRoute = (categorySlug, subCategorySlug) => {
+  const handleSubCategoryRoute = (categoryId, subCategoryId) => {
     setCurrPage(1);
     router.push(
       `/${
         shop_right ? "shop-right-sidebar" : "shop"
-      }?category=${categorySlug}&subcategory=${subCategorySlug}`
+      }?category=${categoryId}&subcategory=${subCategoryId}`
     );
     dispatch(handleFilterSidebarClose());
   };
@@ -65,17 +65,17 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
         {categoryItems.map((category) => (
           <li key={category._id} className="category-item">
             <a
-              onClick={() => handleCategoryRoute(category.slug)}
+              onClick={() => handleCategoryRoute(category._id)}
               style={{
                 cursor: "pointer",
                 fontWeight: "600",
                 color:
-                  router.query.category === category.slug
+                  router.query.category === category._id
                     ? "#ff6b35"
                     : "#2c3e50",
               }}
               className={
-                router.query.category === category.slug ? "active" : ""
+                router.query.category === category._id ? "active" : ""
               }
             >
               {category.title} <span>({category.totalItems || 0})</span>
@@ -95,14 +95,14 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
                   <li key={subCategory._id} style={{ marginBottom: "5px" }}>
                     <a
                       onClick={() =>
-                        handleSubCategoryRoute(category.slug, subCategory.slug)
+                        handleSubCategoryRoute(category._id, subCategory._id)
                       }
                       style={{
                         cursor: "pointer",
                         fontSize: "13px",
                         color:
-                          router.query.category === category.slug &&
-                          router.query.subcategory === subCategory.slug
+                          router.query.category === category._id &&
+                          router.query.subcategory === subCategory._id
                             ? "#ff6b35"
                             : "#6c757d",
                         display: "block",
@@ -110,8 +110,8 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
                         transition: "color 0.2s ease",
                       }}
                       className={
-                        router.query.category === category.slug &&
-                        router.query.subcategory === subCategory.slug
+                        router.query.category === category._id &&
+                        router.query.subcategory === subCategory._id
                           ? "active"
                           : ""
                       }
