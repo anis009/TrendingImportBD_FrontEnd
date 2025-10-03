@@ -46,9 +46,6 @@ const ProductItem = ({ product, style_2 = false }) => {
     dispatch(add_to_compare(prd));
   };
 
-  console.log("discount~~", discount);
-  console.log("price~~", price);
-
   return (
     <>
       <div className={`tp-product-item-2 ${style_2 ? "" : ""}`}>

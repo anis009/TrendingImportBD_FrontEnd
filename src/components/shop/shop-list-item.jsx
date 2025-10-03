@@ -54,18 +54,21 @@ const ShopListItem = ({ product }) => {
     <div className="tp-product-list-item d-md-flex">
       <div className="tp-product-list-thumb p-relative fix">
         <Link href={`/product-details/${_id}`}>
-          {/* Use regular img tag to bypass Next.js optimization for external images */}
-          <img
-            src={getImageUrl(img)}
-            alt={title || "product img"}
-            style={{
-              width: "350px",
-              height: "310px",
-              objectFit: "cover",
-              borderRadius: "8px",
-              backgroundColor: "#f5f5f5",
-            }}
-          />
+          <div
+            style={{ position: "relative", width: "350px", height: "310px" }}
+          >
+            <Image
+              src={getImageUrl(img)}
+              alt={title || "product img"}
+              fill
+              style={{
+                objectFit: "cover",
+                borderRadius: "8px",
+                backgroundColor: "#f5f5f5",
+              }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 350px"
+            />
+          </div>
         </Link>
 
         {/* <!-- product action --> */}
@@ -140,7 +143,11 @@ const ShopListItem = ({ product }) => {
               <span className="tp-product-price-2 new-price">৳{price}</span>
             )}
           </div>
-          <p>{description.substring(0, 100)}</p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: description?.substring(0, 100) + "...",
+            }}
+          ></p>
           <div className="tp-product-list-add-to-cart">
             <button
               onClick={() => handleAddProduct(product)}

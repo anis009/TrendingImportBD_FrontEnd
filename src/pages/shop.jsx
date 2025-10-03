@@ -30,7 +30,18 @@ const ShopPage = ({ query }) => {
       }, 0);
       // Ensure we always have a valid range (maxPrice should be greater than 0)
       const validMaxPrice = maxPrice > 0 ? maxPrice : 1000;
-      setPriceValue([0, validMaxPrice]);
+      // Always reset to [0, validMaxPrice] to prevent range errors
+      setPriceValue((prevValue) => {
+        // If current max value is greater than the new validMaxPrice, reset the range
+        if (prevValue[1] > validMaxPrice) {
+          return [0, validMaxPrice];
+        }
+        // Otherwise, just update the max while keeping the current min/max selection
+        return [
+          Math.min(prevValue[0], validMaxPrice),
+          Math.min(prevValue[1], validMaxPrice),
+        ];
+      });
     } else if (
       !isLoading &&
       !isError &&

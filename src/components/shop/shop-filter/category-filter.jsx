@@ -20,7 +20,7 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
   const handleCategoryRoute = (categoryId) => {
     setCurrPage(1);
     router.push(
-      `/${shop_right ? "shop-right-sidebar" : "shop"}?category=${categoryId}`
+      `/${shop_right ? "shop-right-sidebar" : "shop"}?categories=${categoryId}`
     );
     dispatch(handleFilterSidebarClose());
   };
@@ -31,7 +31,7 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
     router.push(
       `/${
         shop_right ? "shop-right-sidebar" : "shop"
-      }?category=${categoryId}&subcategory=${subCategoryId}`
+      }?categories=${categoryId}&subCategories=${subCategoryId}`
     );
     dispatch(handleFilterSidebarClose());
   };
@@ -70,12 +70,12 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
                 cursor: "pointer",
                 fontWeight: "600",
                 color:
-                  router.query.category === category._id
+                  router.query.categories === category._id
                     ? "#ff6b35"
                     : "#2c3e50",
               }}
               className={
-                router.query.category === category._id ? "active" : ""
+                router.query.categories === category._id ? "active" : ""
               }
             >
               {category.title} <span>({category.totalItems || 0})</span>
@@ -101,8 +101,8 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
                         cursor: "pointer",
                         fontSize: "13px",
                         color:
-                          router.query.category === category._id &&
-                          router.query.subcategory === subCategory._id
+                          router.query.categories === category._id &&
+                          router.query.subCategories === subCategory._id
                             ? "#ff6b35"
                             : "#6c757d",
                         display: "block",
@@ -110,8 +110,8 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
                         transition: "color 0.2s ease",
                       }}
                       className={
-                        router.query.category === category._id &&
-                        router.query.subcategory === subCategory._id
+                        router.query.categories === category._id &&
+                        router.query.subCategories === subCategory._id
                           ? "active"
                           : ""
                       }
@@ -119,8 +119,8 @@ const CategoryFilter = ({ setCurrPage, shop_right = false }) => {
                       onMouseLeave={(e) => {
                         if (
                           !(
-                            router.query.category === category.slug &&
-                            router.query.subcategory === subCategory.slug
+                            router.query.categories === category.slug &&
+                            router.query.subCategories === subCategory.slug
                           )
                         ) {
                           e.target.style.color = "#6c757d";

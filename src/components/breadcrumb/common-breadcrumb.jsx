@@ -11,7 +11,7 @@ const CommonBreadcrumb = ({
     <section
       className={`breadcrumb__area ${
         center ? "text-center" : ""
-      } include-bg pt-95 pb-50`}
+      } include-bg pt-30 pb-30`}
       style={{ backgroundColor: bg_clr && `#EFF1F5` }}
     >
       <div className="container">

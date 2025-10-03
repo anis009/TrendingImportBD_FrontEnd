@@ -35,17 +35,16 @@ const CategoriesPage = () => {
     let url = "/shop?";
 
     if (category) {
-      url += `category=${category.slug}`;
+      url += `categories=${category._id}`;
     }
 
     if (subCategory) {
-      url += `&subcategory=${subCategory.slug}`;
+      url += `&subcategories=${subCategory._id}`;
     }
 
     if (item) {
       url += `&item=${encodeURIComponent(item.name)}`;
     }
-
     router.push(url);
   };
 
@@ -507,7 +506,12 @@ const CategoriesPage = () => {
     categories.data.length > 0
   ) {
     content = (
-      <div className="tp-categories-area pt-80 pb-80">
+      <div
+        style={{
+          borderTop: "1px solid #ddd",
+        }}
+        className="tp-categories-area pt-20 pb-20"
+      >
         <div className="container">
           {/* Header */}
           <div className="row mb-4">

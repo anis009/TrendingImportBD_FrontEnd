@@ -5,9 +5,14 @@ const InputRange = ({ STEP, MIN, MAX, values, handleChanges }) => {
   const validMIN = typeof MIN === "number" ? MIN : 0;
   const validMAX =
     typeof MAX === "number" && MAX > validMIN ? MAX : validMIN + 1000;
+
+  // Ensure values don't exceed the valid range
   const validValues =
     Array.isArray(values) && values.length === 2
-      ? values
+      ? [
+          Math.max(validMIN, Math.min(values[0], validMAX)),
+          Math.max(validMIN, Math.min(values[1], validMAX)),
+        ]
       : [validMIN, validMAX];
 
   return (
