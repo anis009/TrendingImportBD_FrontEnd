@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Scrollbar } from "swiper";
+import { Pagination, Scrollbar } from "swiper/modules";
 // internal
 import { useGetProductTypeQuery } from "@/redux/features/productApi";
 import ProductSliderItem from "./product-slider-item";

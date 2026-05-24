@@ -4,6 +4,9 @@ import ReactModal from "react-modal";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { ToastContainer } from "@/utils/toast";
+import "react-modal-video/css/modal-video.css";
+import "slick-carousel/slick/slick.css";
+import "swiper/css/bundle";
 import "../styles/index.scss";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 if (typeof window !== "undefined") {

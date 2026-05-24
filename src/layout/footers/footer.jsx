@@ -23,8 +23,8 @@ const Footer = ({
           style_2
             ? "tp-footer-style-2"
             : style_3
-            ? "tp-footer-style-2 tp-footer-style-3"
-            : ""
+              ? "tp-footer-style-2 tp-footer-style-3"
+              : ""
         }`}
         data-bg-color={`${style_2 ? "footer-bg-white" : "footer-bg-grey"}`}
       >
@@ -36,7 +36,12 @@ const Footer = ({
                   <div className="tp-footer-widget-content">
                     <div className="tp-footer-logo">
                       <Link href="/">
-                        <Image src={logo} alt="logo" />
+                        <Image
+                          src="/logo.png"
+                          height="150"
+                          width="200"
+                          alt="logo"
+                        />
                       </Link>
                     </div>
                     <p className="tp-footer-desc">

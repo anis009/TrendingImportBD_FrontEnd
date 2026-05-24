@@ -1,11 +1,18 @@
 export const getBaseUrl = () => {
-  // If production, use production server
-  if (process.env.NODE_ENV === "production") {
-    return "https://server.trendingimportbd.com";
+  if (process.env.NEXT_PUBLIC_API_BASE_URL) {
+    return process.env.NEXT_PUBLIC_API_BASE_URL;
   }
 
-  // If development, use local server
-  return "http://localhost:5050";
+  if (process.env.NODE_ENV === "production") {
+    return (
+      process.env.NEXT_PUBLIC_API_BASE_URL_PRODUCTION ||
+      "https://server-trendingimportbd.vercel.app"
+    );
+  }
+
+  return (
+    process.env.NEXT_PUBLIC_API_BASE_URL_DEVELOPMENT || "http://localhost:5050"
+  );
 };
 
 export default getBaseUrl;

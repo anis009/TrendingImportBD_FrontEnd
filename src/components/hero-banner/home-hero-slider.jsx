@@ -1,6 +1,6 @@
 // external
 import React, { useState } from "react";
-import { Navigation, Pagination, EffectFade } from "swiper";
+import { Navigation, Pagination, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import Link from "next/link";

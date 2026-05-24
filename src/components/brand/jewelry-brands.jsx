@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Navigation } from "swiper/modules";
 // internal
 import logo_1 from '@assets/img/brand/logo_01.png';
 import logo_2 from '@assets/img/brand/logo_02.png';

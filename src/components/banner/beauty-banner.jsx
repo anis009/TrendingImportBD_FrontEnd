@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectFade, Pagination } from "swiper";
+import { Navigation, EffectFade, Pagination } from "swiper/modules";
 // internal
 import slider_bg_1 from "@assets/img/slider/3/slider-1.jpg";
 import slider_bg_2 from "@assets/img/slider/3/slider-2.jpg";

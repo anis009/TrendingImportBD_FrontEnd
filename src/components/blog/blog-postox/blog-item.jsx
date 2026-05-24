@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper";
+import { Navigation, Autoplay } from "swiper/modules";
 import { useState } from 'react';
 // internal
 import PopupVideo from '@/components/common/popup-video';

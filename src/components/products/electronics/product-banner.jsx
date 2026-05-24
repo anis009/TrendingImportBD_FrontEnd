@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Pagination, EffectFade } from 'swiper';
+import { Pagination, EffectFade } from "swiper/modules";
 import { Swiper, SwiperSlide } from 'swiper/react';
 // internal
 import offer_img from '@assets/img/banner/banner-slider-offer.png';

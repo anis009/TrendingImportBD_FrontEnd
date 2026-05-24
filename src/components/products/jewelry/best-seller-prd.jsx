@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scrollbar } from 'swiper';
+import { Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from 'swiper/react';
 // internal
 import ProductItem from './product-item';

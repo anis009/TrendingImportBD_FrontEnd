@@ -1,6 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
+import { Navigation } from "swiper/modules";
 import { Rating } from 'react-simple-star-rating';
 import Link from 'next/link';
 // internal

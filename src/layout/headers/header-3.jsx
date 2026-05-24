@@ -48,8 +48,10 @@ const HeaderThree = () => {
                     <Link href="/">
                       <Image
                         className="logo-light"
-                        src={logo_white}
+                        src={"/favicon.png"}
                         alt="logo"
+                        width={200}
+                        height={120}
                       />
                       <Image className="logo-dark" src={logo_dark} alt="logo" />
                     </Link>

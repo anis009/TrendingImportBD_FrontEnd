@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, EffectFade } from "swiper";
+import { Pagination, Navigation, EffectFade } from "swiper/modules";
 import Image from "next/image";
 // internal
 import special_thumb from "@assets/img/product/special/big/special-big-1.jpg";

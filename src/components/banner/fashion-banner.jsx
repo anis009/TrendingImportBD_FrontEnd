@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, EffectFade, Navigation } from 'swiper';
+import { Pagination, EffectFade, Navigation } from "swiper/modules";
 // internal
 import slider_img_1 from '@assets/img/slider/2/slider-1.png';
 import slider_img_2 from '@assets/img/slider/2/slider-2.png';
