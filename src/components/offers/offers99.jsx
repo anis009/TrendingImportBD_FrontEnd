@@ -15,15 +15,14 @@ const Offers99 = () => {
 
   const products = data?.data || [];
 
-  console.log("products~~", products);
-
   // Custom Arrow Components
-  const CustomPrevArrow = (props) => (
+  const CustomPrevArrow = ({ className, style, onClick }) => (
     <button
-      {...props}
-      className={`${props.className} ${styles.slickArrow} ${styles.slickPrev}`}
+      type="button"
+      className={`${className} ${styles.slickArrow} ${styles.slickPrev}`}
+      onClick={onClick}
       style={{
-        ...props.style,
+        ...style,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -44,12 +43,13 @@ const Offers99 = () => {
     </button>
   );
 
-  const CustomNextArrow = (props) => (
+  const CustomNextArrow = ({ className, style, onClick }) => (
     <button
-      {...props}
-      className={`${props.className} ${styles.slickArrow} ${styles.slickNext}`}
+      type="button"
+      className={`${className} ${styles.slickArrow} ${styles.slickNext}`}
+      onClick={onClick}
       style={{
-        ...props.style,
+        ...style,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

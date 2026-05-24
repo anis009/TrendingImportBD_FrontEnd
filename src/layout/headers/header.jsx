@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 // internal
 import Menus from "./header-com/menus";
 import useSticky from "@/hooks/use-sticky";
-import logo from "@assets/img/logo/logo.svg";
 import useCartInfo from "@/hooks/use-cart-info";
 import OffCanvas from "@/components/common/off-canvas";
+import SiteLogo from "@/components/common/site-logo";
 import { openCartMini } from "@/redux/features/cartSlice";
 import HeaderCategory from "./header-com/header-category";
 import HeaderTopRight from "./header-com/header-top-right";
@@ -66,14 +65,7 @@ const Header = () => {
               <div className="row align-items-center">
                 <div className="col-xl-2 col-lg-2 col-md-4 col-6">
                   <div className="logo">
-                    <Link href="/">
-                      <Image
-                        src="/favicon.png"
-                        alt="logo"
-                        width={200}
-                        height={120}
-                      />
-                    </Link>
+                    <SiteLogo priority />
                   </div>
                 </div>
                 <div className="col-xl-6 col-lg-7 d-none d-lg-block">
@@ -153,9 +145,7 @@ const Header = () => {
             <div className="row align-items-center">
               <div className="col-xl-3 col-lg-3 col-md-3 col-6">
                 <div className="logo">
-                  <Link href="/">
-                    <Image src="/logo.png" alt="logo" />
-                  </Link>
+                  <SiteLogo variant="primary" />
                 </div>
               </div>
               <div className="col-xl-6 col-lg-6 col-md-6 d-none d-md-block">

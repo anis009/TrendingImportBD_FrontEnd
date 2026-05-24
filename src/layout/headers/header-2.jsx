@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 // internal
 import Menus from "./header-com/menus";
-import logo from "@assets/img/logo/logo.svg";
 import useSticky from "@/hooks/use-sticky";
 import useCartInfo from "@/hooks/use-cart-info";
 import { openCartMini } from "@/redux/features/cartSlice";
+import SiteLogo from "@/components/common/site-logo";
 import HeaderTopRight from "./header-com/header-top-right";
 import CartMiniSidebar from "@/components/common/cart-mini-sidebar";
 import {
@@ -80,9 +79,7 @@ const HeaderTwo = ({ style_2 = false }) => {
                 <div className="row align-items-center">
                   <div className="col-xl-2 col-lg-5 col-md-5 col-sm-4 col-6">
                     <div className="logo">
-                      <Link href="/">
-                        <Image src={logo} alt="logo" priority />
-                      </Link>
+                      <SiteLogo priority />
                     </div>
                   </div>
                   <div className="col-xl-5 d-none d-xl-block">

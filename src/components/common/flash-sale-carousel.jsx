@@ -60,7 +60,7 @@ const FlashSaleCarousel = () => {
     <div
       className="flash-sale-carousel container"
       style={{
-        marginTop: "60px",
+        marginTop: "20px",
       }}
     >
       <div className="carousel-container">

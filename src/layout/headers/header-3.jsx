@@ -1,19 +1,17 @@
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // internal
-import logo_white from "@assets/img/logo/logo-white.svg";
-import logo_dark from "@assets/img/logo/logo.svg";
 import { CartTwo, Menu, Search, Wishlist } from "@/svg";
 import Menus from "./header-com/menus";
 import useSticky from "@/hooks/use-sticky";
 import SearchBar from "./header-com/search-bar";
 import OffCanvas from "@/components/common/off-canvas";
+import { LogoImage } from "@/components/common/site-logo";
 import CartMiniSidebar from "@/components/common/cart-mini-sidebar";
+import menu_data from "@/data/menu-data";
 import useCartInfo from "@/hooks/use-cart-info";
 import { openCartMini } from "@/redux/features/cartSlice";
-import Colors from "@/constants/colors";
 import { useGetCategoriesHierarchyQuery } from "@/redux/features/categoryApi";
 import MegaMenu from "@/components/common/mega-menu"; // Import the new component
 
@@ -32,12 +30,9 @@ const HeaderThree = () => {
       <header>
         <div
           id="header-sticky"
-          className={`tp-header-area tp-header-style-transparent-white tp-header-transparent tp-header-sticky has-dark-logo tp-header-height ${
+          className={`tp-header-area tp-header-style-transparent-white tp-header-style-white tp-header-sticky tp-header-height ${
             sticky ? "header-sticky" : ""
           }`}
-          style={{
-            backgroundColor: Colors.primary,
-          }}
         >
           <div className="tp-header-bottom-3 pl-35 pr-35">
             <div className="container-fluid">
@@ -46,14 +41,7 @@ const HeaderThree = () => {
                 <div className="col-xl-2 col-lg-2 col-6">
                   <div className="logo">
                     <Link href="/">
-                      <Image
-                        className="logo-light"
-                        src={"/favicon.png"}
-                        alt="logo"
-                        width={200}
-                        height={120}
-                      />
-                      <Image className="logo-dark" src={logo_dark} alt="logo" />
+                      <LogoImage priority />
                     </Link>
                   </div>
                 </div>
@@ -76,7 +64,7 @@ const HeaderThree = () => {
                 {/* Action Items */}
                 <div className="col-xl-2 col-lg-2 col-6">
                   <div className="tp-header-action d-flex align-items-center justify-content-end ml-50">
-                    <div className="tp-header-action-item d-none d-sm-block">
+                    <div className="tp-header-action-item">
                       <button
                         onClick={() => setIsSearchOpen(true)}
                         type="button"
@@ -85,7 +73,7 @@ const HeaderThree = () => {
                         <Search />
                       </button>
                     </div>
-                    <div className="tp-header-action-item d-none d-sm-block">
+                    <div className="tp-header-action-item">
                       <Link href="/wishlist" className="tp-header-action-btn">
                         <Wishlist />
                         <span className="tp-header-action-badge">
@@ -93,7 +81,7 @@ const HeaderThree = () => {
                         </span>
                       </Link>
                     </div>
-                    <div className="tp-header-action-item d-none d-sm-block">
+                    <div className="tp-header-action-item">
                       <button
                         onClick={() => dispatch(openCartMini())}
                         type="button"
@@ -105,7 +93,7 @@ const HeaderThree = () => {
                         </span>
                       </button>
                     </div>
-                    <div className="tp-header-action-item d-none d-sm-block">
+                    <div className="tp-header-action-item d-none d-sm-flex">
                       {user?._id ? (
                         <Link href="/profile" className="tp-header-action-btn">
                           <i
@@ -133,6 +121,24 @@ const HeaderThree = () => {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="tp-header-mobile-nav d-lg-none">
+                <button
+                  type="button"
+                  onClick={() => setIsCanvasOpen(true)}
+                  className="tp-header-mobile-nav-btn"
+                >
+                  All Categories
+                </button>
+                {menu_data.map((menu) => (
+                  <Link
+                    key={menu.id}
+                    href={menu.link}
+                    className="tp-header-mobile-nav-link"
+                  >
+                    {menu.title}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

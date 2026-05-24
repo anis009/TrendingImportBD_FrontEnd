@@ -1,37 +1,87 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-// Simple inline SVG components to avoid import issues
+const COLORS = {
+  primary: "#E91E63",
+  primaryDark: "#AD1457",
+  text: "#212121",
+  muted: "#757575",
+  soft: "#FFF1F6",
+  border: "#ECEFF3",
+};
+
 const GridIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z" />
   </svg>
 );
 
 const ChevronDownIcon = ({ isOpen }) => (
   <svg
-    width="12"
-    height="12"
+    width="14"
+    height="14"
     viewBox="0 0 24 24"
     fill="currentColor"
     style={{
       transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-      transition: "transform 0.3s ease",
+      transition: "transform 0.2s ease",
     }}
   >
     <path d="M7 10l5 5 5-5z" />
   </svg>
 );
 
+const ArrowIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+    <path d="m13 5 7 7-7 7v-4H4v-6h9V5z" />
+  </svg>
+);
+
+const CategoryInitial = ({ title, isActive }) => (
+  <span
+    style={{
+      width: "34px",
+      height: "34px",
+      borderRadius: "8px",
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flex: "0 0 auto",
+      color: isActive ? "#fff" : COLORS.primary,
+      background: isActive ? COLORS.primary : COLORS.soft,
+      fontSize: "13px",
+      fontWeight: 800,
+    }}
+  >
+    {(title || "C").charAt(0).toUpperCase()}
+  </span>
+);
+
 const MegaMenu = ({ categories }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(null);
-  const [expandedSubCategories, setExpandedSubCategories] = useState({}); // Track expanded subcategories
+  const [expandedSubCategories, setExpandedSubCategories] = useState({});
 
-  // Handle case where categories data might be undefined
   const categoriesData = categories?.data || [];
 
-  // Toggle expanded state for a subcategory
+  useEffect(() => {
+    if (isOpen && !activeCategory && categoriesData.length > 0) {
+      setActiveCategory(categoriesData[0]);
+    }
+  }, [activeCategory, categoriesData, isOpen]);
+
+  const openMenu = () => {
+    setIsOpen(true);
+    if (!activeCategory && categoriesData.length > 0) {
+      setActiveCategory(categoriesData[0]);
+    }
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    setExpandedSubCategories({});
+  };
+
   const toggleSubCategoryExpansion = (subCategoryId, e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -41,7 +91,6 @@ const MegaMenu = ({ categories }) => {
     }));
   };
 
-  // Reset expanded state when category changes
   const handleCategoryHover = (category) => {
     if (activeCategory?._id !== category._id) {
       setExpandedSubCategories({});
@@ -51,25 +100,28 @@ const MegaMenu = ({ categories }) => {
 
   return (
     <div className="tp-mega-menu-wrapper" style={{ position: "relative" }}>
-      {/* Categories Button */}
       <button
         className="tp-mega-menu-btn"
-        onClick={() => setIsOpen(!isOpen)}
-        onMouseEnter={() => setIsOpen(true)}
+        onClick={() => (isOpen ? closeMenu() : openMenu())}
+        onMouseEnter={openMenu}
         style={{
-          background: "rgba(255, 255, 255, 0.15)",
-          border: "1px solid rgba(255, 255, 255, 0.3)",
+          minHeight: "44px",
+          background: isOpen ? COLORS.soft : "#fff",
+          border: `1px solid ${isOpen ? COLORS.primary : COLORS.border}`,
           borderRadius: "8px",
-          padding: "12px 20px",
-          color: "white",
+          padding: "0 16px",
+          color: isOpen ? COLORS.primary : COLORS.text,
           fontSize: "14px",
-          fontWeight: "600",
-          display: "flex",
+          fontWeight: 700,
+          display: "inline-flex",
           alignItems: "center",
-          gap: "8px",
+          gap: "9px",
           cursor: "pointer",
-          transition: "all 0.3s ease",
-          backdropFilter: "blur(10px)",
+          transition: "all 0.2s ease",
+          boxShadow: isOpen
+            ? "0 10px 24px rgba(233, 30, 99, 0.12)"
+            : "0 1px 2px rgba(0, 0, 0, 0.04)",
+          whiteSpace: "nowrap",
         }}
       >
         <GridIcon />
@@ -77,154 +129,233 @@ const MegaMenu = ({ categories }) => {
         <ChevronDownIcon isOpen={isOpen} />
       </button>
 
-      {/* Mega Menu Dropdown */}
       {isOpen && (
         <div
           className="tp-mega-menu-dropdown"
-          onMouseLeave={() => {
-            setIsOpen(false);
-            setActiveCategory(null);
-            setExpandedSubCategories({});
-          }}
+          onMouseLeave={closeMenu}
           style={{
-            position: "absolute",
-            top: "100%",
-            left: "0",
-            width: "80vw",
-            maxWidth: "1200px",
-            background: "white",
-            boxShadow: "0 10px 40px rgba(0, 0, 0, 0.15)",
-            borderRadius: "12px",
-            zIndex: 1000,
-            marginTop: "8px",
-            border: "1px solid #e9ecef",
-            overflow: "hidden",
+            position: "fixed",
+            top: "76px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "calc(100vw - 48px)",
+            maxWidth: "1120px",
+            background: "#fff",
+            boxShadow: "0 24px 70px rgba(15, 23, 42, 0.18)",
+            borderRadius: "8px",
+            zIndex: 9999,
+            border: `1px solid ${COLORS.border}`,
+            overflow: "visible",
           }}
         >
-          <div style={{ display: "flex", minHeight: "400px" }}>
-            {/* Categories Sidebar */}
-            <div
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "292px minmax(0, 1fr)",
+              minHeight: "420px",
+              maxHeight: "calc(100vh - 100px)",
+              overflow: "hidden",
+              borderRadius: "8px",
+            }}
+          >
+            <aside
               style={{
-                width: "300px",
-                background: "#f8f9fa",
-                borderRight: "1px solid #e9ecef",
+                background: "#FAFBFC",
+                borderRight: `1px solid ${COLORS.border}`,
                 overflowY: "auto",
+                maxHeight: "calc(100vh - 100px)",
               }}
             >
-              {categoriesData.map((category) => (
-                <div
-                  key={category._id}
-                  className="tp-mega-category-item"
-                  onMouseEnter={() => handleCategoryHover(category)}
+              <div
+                style={{
+                  padding: "18px 18px 12px",
+                  borderBottom: `1px solid ${COLORS.border}`,
+                }}
+              >
+                <p
                   style={{
-                    padding: "16px 20px",
-                    cursor: "pointer",
-                    borderBottom: "1px solid #e9ecef",
-                    background:
-                      activeCategory?._id === category._id
-                        ? "#fff"
-                        : "transparent",
-                    borderLeft:
-                      activeCategory?._id === category._id
-                        ? "4px solid #ff6b35"
-                        : "4px solid transparent",
-                    transition: "all 0.3s ease",
+                    margin: 0,
+                    color: COLORS.primary,
+                    fontSize: "12px",
+                    fontWeight: 800,
+                    textTransform: "uppercase",
                   }}
                 >
-                  <div>
-                    <h6
-                      style={{
-                        margin: 0,
-                        fontSize: "15px",
-                        fontWeight: "600",
-                        color:
-                          activeCategory?._id === category._id
-                            ? "#ff6b35"
-                            : "#2c3e50",
-                        marginBottom: "4px",
-                      }}
-                    >
-                      {category.title}
-                    </h6>
-                    <span
-                      style={{
-                        fontSize: "12px",
-                        color: "#6c757d",
-                      }}
-                    >
-                      {category.totalItems || 0} items •{" "}
-                      {category.subCategoriesCount || 0} categories
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  Shop by category
+                </p>
+              </div>
 
-            {/* Subcategories Content */}
-            <div style={{ flex: 1, padding: "20px" }}>
+              <div style={{ padding: "10px" }}>
+                {categoriesData.map((category) => {
+                  const isActive = activeCategory?._id === category._id;
+
+                  return (
+                    <div
+                      key={category._id}
+                      className="tp-mega-category-item"
+                      onMouseEnter={() => handleCategoryHover(category)}
+                      style={{
+                        padding: "11px 12px",
+                        cursor: "pointer",
+                        borderRadius: "8px",
+                        background: isActive ? "#fff" : "transparent",
+                        boxShadow: isActive
+                          ? "0 8px 20px rgba(15, 23, 42, 0.08)"
+                          : "none",
+                        border: `1px solid ${
+                          isActive ? COLORS.border : "transparent"
+                        }`,
+                        transition: "all 0.2s ease",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "10px",
+                        }}
+                      >
+                        <CategoryInitial
+                          title={category.title}
+                          isActive={isActive}
+                        />
+                        <div style={{ minWidth: 0 }}>
+                          <h6
+                            style={{
+                              margin: 0,
+                              fontSize: "14px",
+                              fontWeight: 700,
+                              color: isActive ? COLORS.primary : COLORS.text,
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            {category.title}
+                          </h6>
+                          <span
+                            style={{
+                              display: "block",
+                              marginTop: "2px",
+                              fontSize: "12px",
+                              color: COLORS.muted,
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            {category.totalItems || 0} items /{" "}
+                            {category.subCategoriesCount || 0} categories
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </aside>
+
+            <section
+              style={{
+                minWidth: 0,
+                padding: "22px",
+                overflowY: "auto",
+                maxHeight: "calc(100vh - 100px)",
+                background:
+                  "linear-gradient(180deg, #ffffff 0%, #ffffff 64%, #fff8fb 100%)",
+              }}
+            >
               {activeCategory ? (
-                <div>
-                  <div style={{ marginBottom: "20px" }}>
-                    <h4
+                <>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      gap: "20px",
+                      alignItems: "flex-start",
+                      marginBottom: "18px",
+                    }}
+                  >
+                    <div>
+                      <h4
+                        style={{
+                          margin: 0,
+                          color: COLORS.text,
+                          fontSize: "22px",
+                          lineHeight: 1.25,
+                          fontWeight: 800,
+                        }}
+                      >
+                        {activeCategory.title}
+                      </h4>
+                      <p
+                        style={{
+                          color: COLORS.muted,
+                          margin: "6px 0 0",
+                          fontSize: "13px",
+                        }}
+                      >
+                        {activeCategory.subCategoriesCount || 0} subcategories
+                        with {activeCategory.totalItems || 0} total items
+                      </p>
+                    </div>
+
+                    <Link
+                      href={`/shop?category=${activeCategory.slug}`}
                       style={{
-                        fontSize: "20px",
-                        fontWeight: "700",
-                        color: "#2c3e50",
-                        marginBottom: "8px",
+                        color: COLORS.primary,
+                        border: `1px solid ${COLORS.primary}`,
+                        background: "#fff",
+                        borderRadius: "8px",
+                        padding: "8px 12px",
+                        fontSize: "13px",
+                        lineHeight: 1,
+                        fontWeight: 800,
+                        textDecoration: "none",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "7px",
+                        flex: "0 0 auto",
                       }}
                     >
-                      {activeCategory.title}
-                    </h4>
-                    <p
-                      style={{
-                        color: "#6c757d",
-                        margin: 0,
-                        fontSize: "14px",
-                      }}
-                    >
-                      Explore {activeCategory.subCategoriesCount || 0}{" "}
-                      subcategories with {activeCategory.totalItems || 0} total
-                      items
-                    </p>
+                      View all
+                      <ArrowIcon />
+                    </Link>
                   </div>
 
                   <div
                     style={{
                       display: "grid",
                       gridTemplateColumns:
-                        "repeat(auto-fit, minmax(280px, 1fr))",
-                      gap: "16px",
-                      maxHeight: "320px",
-                      overflowY: "auto",
+                        "repeat(auto-fill, minmax(230px, 1fr))",
+                      gap: "14px",
                     }}
                   >
                     {activeCategory.subCategories?.map((subCategory) => {
                       const isExpanded = expandedSubCategories[subCategory._id];
                       const itemsToShow = isExpanded
                         ? subCategory.items
-                        : subCategory.items?.slice(0, 3);
+                        : subCategory.items?.slice(0, 4);
 
                       return (
                         <div
                           key={subCategory._id}
                           style={{
-                            background: "#f8f9fa",
+                            background: "#fff",
                             borderRadius: "8px",
-                            padding: "16px",
-                            transition: "all 0.3s ease",
-                            border: "1px solid #e9ecef",
-                            cursor: "pointer",
+                            padding: "15px",
+                            border: `1px solid ${COLORS.border}`,
+                            boxShadow: "0 8px 24px rgba(15, 23, 42, 0.06)",
+                            transition: "all 0.2s ease",
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.background = "#fff";
-                            e.currentTarget.style.boxShadow =
-                              "0 4px 12px rgba(0,0,0,0.1)";
+                            e.currentTarget.style.borderColor =
+                              "rgba(233, 30, 99, 0.35)";
                             e.currentTarget.style.transform =
                               "translateY(-2px)";
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.background = "#f8f9fa";
-                            e.currentTarget.style.boxShadow = "none";
+                            e.currentTarget.style.borderColor = COLORS.border;
                             e.currentTarget.style.transform = "translateY(0)";
                           }}
                         >
@@ -234,10 +365,11 @@ const MegaMenu = ({ categories }) => {
                           >
                             <h6
                               style={{
-                                fontSize: "16px",
-                                fontWeight: "600",
-                                color: "#2c3e50",
-                                marginBottom: "8px",
+                                margin: 0,
+                                fontSize: "15px",
+                                lineHeight: 1.3,
+                                fontWeight: 800,
+                                color: COLORS.text,
                               }}
                             >
                               {subCategory.title}
@@ -245,8 +377,8 @@ const MegaMenu = ({ categories }) => {
                             <span
                               style={{
                                 fontSize: "12px",
-                                color: "#6c757d",
-                                marginBottom: "12px",
+                                color: COLORS.muted,
+                                marginTop: "5px",
                                 display: "block",
                               }}
                             >
@@ -254,13 +386,11 @@ const MegaMenu = ({ categories }) => {
                             </span>
                           </Link>
 
-                          {/* Show items */}
                           <div
                             style={{
                               marginTop: "12px",
-                              maxHeight: isExpanded ? "200px" : "auto",
-                              overflowY: isExpanded ? "auto" : "visible",
-                              transition: "max-height 0.3s ease",
+                              paddingTop: "10px",
+                              borderTop: `1px solid ${COLORS.border}`,
                             }}
                           >
                             {itemsToShow?.map((item) => (
@@ -274,145 +404,73 @@ const MegaMenu = ({ categories }) => {
                                 style={{
                                   display: "block",
                                   fontSize: "12px",
-                                  color: "#495057",
+                                  lineHeight: 1.55,
+                                  color: "#4B5563",
                                   textDecoration: "none",
                                   padding: "3px 0",
-                                  transition: "color 0.2s ease",
                                 }}
                                 onMouseEnter={(e) =>
-                                  (e.target.style.color = "#ff6b35")
+                                  (e.currentTarget.style.color = COLORS.primary)
                                 }
                                 onMouseLeave={(e) =>
-                                  (e.target.style.color = "#495057")
+                                  (e.currentTarget.style.color = "#4B5563")
                                 }
                               >
-                                • {item.name}
+                                - {item.name}
                               </Link>
                             ))}
 
-                            {/* Show More/Less Toggle */}
-                            {(subCategory.items?.length || 0) > 3 && (
+                            {(subCategory.items?.length || 0) > 4 && (
                               <button
                                 onClick={(e) =>
                                   toggleSubCategoryExpansion(subCategory._id, e)
                                 }
                                 style={{
-                                  display: "block",
+                                  marginTop: "7px",
                                   fontSize: "12px",
-                                  color: "#ff6b35",
-                                  background: "none",
+                                  color: COLORS.primary,
+                                  background: COLORS.soft,
                                   border: "none",
-                                  padding: "4px 0",
-                                  fontWeight: "600",
+                                  borderRadius: "8px",
+                                  padding: "6px 9px",
+                                  fontWeight: 800,
                                   cursor: "pointer",
                                   textAlign: "left",
-                                  transition: "all 0.2s ease",
-                                  borderRadius: "4px",
-                                  marginTop: "4px",
-                                }}
-                                onMouseEnter={(e) => {
-                                  e.target.style.background = "#fff3f0";
-                                  e.target.style.padding = "4px 8px";
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.target.style.background = "none";
-                                  e.target.style.padding = "4px 0";
                                 }}
                               >
-                                {isExpanded ? (
-                                  <>
-                                    <i
-                                      className="fa-solid fa-chevron-up"
-                                      style={{
-                                        marginRight: "6px",
-                                        fontSize: "10px",
-                                      }}
-                                    ></i>
-                                    Show Less
-                                  </>
-                                ) : (
-                                  <>
-                                    <i
-                                      className="fa-solid fa-chevron-down"
-                                      style={{
-                                        marginRight: "6px",
-                                        fontSize: "10px",
-                                      }}
-                                    ></i>
-                                    + {(subCategory.items?.length || 0) - 3}{" "}
-                                    more items
-                                  </>
-                                )}
+                                {isExpanded
+                                  ? "Show less"
+                                  : `+ ${
+                                      (subCategory.items?.length || 0) - 4
+                                    } more`}
                               </button>
-                            )}
-
-                            {/* View All in Shop Link */}
-                            {isExpanded && subCategory.items?.length > 0 && (
-                              <Link
-                                href={`/shop?category=${activeCategory.slug}&subcategory=${subCategory.slug}`}
-                                style={{
-                                  display: "block",
-                                  fontSize: "12px",
-                                  color: "#007bff",
-                                  textDecoration: "none",
-                                  padding: "6px 8px",
-                                  fontWeight: "600",
-                                  background:
-                                    "linear-gradient(135deg, #e3f2fd, #bbdefb)",
-                                  borderRadius: "4px",
-                                  textAlign: "center",
-                                  marginTop: "8px",
-                                  border: "1px solid #90caf9",
-                                  transition: "all 0.2s ease",
-                                }}
-                                onMouseEnter={(e) => {
-                                  e.target.style.background =
-                                    "linear-gradient(135deg, #2196f3, #1976d2)";
-                                  e.target.style.color = "white";
-                                  e.target.style.transform = "translateY(-1px)";
-                                  e.target.style.boxShadow =
-                                    "0 2px 8px rgba(33,150,243,0.3)";
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.target.style.background =
-                                    "linear-gradient(135deg, #e3f2fd, #bbdefb)";
-                                  e.target.style.color = "#007bff";
-                                  e.target.style.transform = "translateY(0)";
-                                  e.target.style.boxShadow = "none";
-                                }}
-                              >
-                                <i
-                                  className="fa-solid fa-external-link-alt"
-                                  style={{ marginRight: "6px" }}
-                                ></i>
-                                View All in Shop
-                              </Link>
                             )}
                           </div>
                         </div>
                       );
                     })}
                   </div>
-                </div>
+                </>
               ) : (
                 <div
                   style={{
+                    height: "100%",
+                    minHeight: "300px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    height: "300px",
-                    color: "#6c757d",
+                    color: COLORS.muted,
                   }}
                 >
                   <div style={{ textAlign: "center" }}>
                     <GridIcon />
-                    <p style={{ marginTop: "16px", fontSize: "16px" }}>
-                      Hover over a category to see subcategories
+                    <p style={{ margin: "12px 0 0", fontSize: "14px" }}>
+                      Categories will appear here
                     </p>
                   </div>
                 </div>
               )}
-            </div>
+            </section>
           </div>
         </div>
       )}

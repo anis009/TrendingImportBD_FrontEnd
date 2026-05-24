@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
 import dayjs from "dayjs";
 import ReactToPrint from "react-to-print";
 // internal
@@ -8,7 +7,7 @@ import SEO from "@/components/seo";
 import Wrapper from "@/layout/wrapper";
 import HeaderTwo from "@/layout/headers/header-2";
 import Footer from "@/layout/footers/footer";
-import logo from "@assets/img/logo/logo.svg";
+import { LogoImage } from "@/components/common/site-logo";
 import ErrorMsg from "@/components/common/error-msg";
 import { useGetUserOrderByIdQuery } from "@/redux/features/order/orderApi";
 import PrdDetailsLoader from "@/components/loader/prd-details-loader";
@@ -65,7 +64,7 @@ const SingleOrder = ({ params }) => {
                       <div className="row align-items-end">
                         <div className="col-md-4 col-sm-6">
                           <div className="invoice__left">
-                            <Image src={logo} alt="logo" />
+                            <LogoImage />
                             <p>
                               Mirpur Road-1 <br /> Dhaka Bangladesh
                             </p>
